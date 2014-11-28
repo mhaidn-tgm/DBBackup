@@ -1,0 +1,118 @@
+\documentclass[10pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{listings}
+\usepackage{glossaries}
+\usepackage{placeins}
+\usepackage{fixltx2e}
+\usepackage{scrpage2}
+\usepackage{scrtime}
+\clearscrheadfoot
+\pagestyle{scrheadings}
+\usepackage[
+top    = 2.5cm,
+bottom = 3cm,
+left   = 3cm,
+right  = 3cm]{geometry}
+\setcounter{secnumdepth}{4}
+\title{3rd Sprint}
+
+\author{RoboNav}
+\date{\today}
+
+
+\begin{document}
+
+
+\begin{titlepage}
+\begin{center}
+% Oberer Teil der Titelseite:
+
+%NEEDS TO BE OUT COMMENTED sometimes
+%\includegraphics[width=1.0\textwidth]{../../pictures/robonavlogo}\\  
+\includegraphics[width=0.5\textwidth]{pictures/logo}\\  
+
+\LARGE TGM - HTBLuVA Wien XX \\ Informationstechnologie  \\[1.5cm]
+
+% Title
+\rule{14cm}{1mm}
+{ \huge \bfseries \\[0.4cm]  \huge INSY \\ \LARGE Backup mit Mysql und Postgresql \\[0.4cm] }
+
+\rule{14cm}{1mm}
+
+
+
+% Author and supervisor
+\noindent 
+\vspace{5cm}
+\small
+\begin{center}
+  \begin{tabular}{ | p{0.1\textwidth} | p{0.2\textwidth} | p{0.2\textwidth} | p{0.1\textwidth} | p{0.2\textwidth} |}
+    \hline
+\textbf{Version} & \textbf{Autor} & \textbf{Datum} & \textbf{Status} & \textbf{Kommentar} \\ 
+    \hline 
+    \hline
+0.1 & Siegel & 2014.11.28 & Draft &  Erstellung Dokument   \\ 
+    \hline
+  \end{tabular}
+\end{center}
+
+\vfill
+
+% Bottom of the page
+{\small Version of this document: \today ~at  \thistime    }
+\end{center}
+
+%\end{center}
+\end{titlepage}
+
+
+%HEADER AND FOOTER
+\pagenumbering{arabic}
+\ohead{\headmark}
+\ifoot{© Haidn, Siegel}
+\ofoot{\pagemark /\pageref{LastPage}}
+
+\section{Aufgabenstellung}
+Untersuchen Sie die Backup-Tools von MySQL (mysqldump, mysqlhotcopy, ibbackup) und PostgreSQL (pg\_dump) und lösen Sie folgende Aufgaben:
+\\ \\
+Finden und dokumentieren Sie (für ihr System OS/DBMS) die etsprechenden Optionen der Tools für folgende Anforderungen: \\
+Speichern einer/mehrerer/aller Datenbanken des Systems in einer Datei mit/ohne Datenbankstruktur, Trigger und Stored-Routines 
+Verwendung der "IF EXISTS"- und "DROP"-Klausel unter MySQL bzw. PostgreSQL \\
+Logisches vs. Physisches Backup: Was sind die Vor- bzw. Nachteile der beiden Arten und worauf muss man achten
+Online-Backup: Wie kann man einen Dump der DB während des Betriebs ausführen (Locking, ...)
+Wie können Sie auf gemieteten DB-Servern (remote) ebenfalls Backups ausführen? Geben Sie zwei Möglichkeiten an.
+\\ \\
+Wie könnte man die Backupvarianten aus Punkt 1 automatisieren (Uhrzeit als Trigger)? Geben Sie entsprechend für ihr Betriebssystem (Windows, Linux, Mac, ...) Möglichkeiten an.
+Verwendung eines Zeitstempels zur Speicherung der Dumps (in den Filenamen inkludiert; z.B. DBNAME\_20100413\_0952.sql)
+\\ \\
+Abgaberichtlinien:
+ \\ \\
+PDF-Dokument, ca. 15 Seiten, formatiert und strukturiert ähnlich wie das Technik-/Machbarkeits-Kapitel der Diplomarbeit (Zitate, Quellen, Fußnoten, Tabellen, Grafiken, Screenshots, Inhaltsverzeichnis, ...)
+Bitte in Zweier-Teams arbeiten, alle im Team mitarbeitenden Autoren müssen aber in der Lage sein, jedes Thema/Detail auch selbst zu präsentieren. \\
+Arbeitsaufwand ca. 10 Stunden pro Team.  \\
+Präsentation am 9.12.2014
+
+\section{Arbeitszeit}
+\begin{table}[h]
+
+\begin{tabular}{|p{0.4\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+\hline
+\textbf{Task}    & \textbf{Person}                                               & \textbf{Time in hours                              } \\ \hline \hline
+Aufsetzten und ueberpfruefen der Datenbanken & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
+
+Task2 & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ 
+
+\hline \hline
+Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}2\\2\end{tabular}   \\ \hline 
+\textbf{Total Team} & & \textbf{XXX hours}  \\ \hline 
+\end{tabular}
+\caption{Estimated working time}
+\end{table}
+
+\section{Theorie Backup}
+\end{document}
