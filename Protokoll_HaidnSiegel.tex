@@ -48,7 +48,7 @@ right  = 3cm]{geometry}
 
 % Author and supervisor
 \noindent 
-\vspace{5cm}
+\vspace{7cm}
 \small
 \begin{center}
   \begin{tabular}{ | p{0.1\textwidth} | p{0.2\textwidth} | p{0.2\textwidth} | p{0.1\textwidth} | p{0.2\textwidth} |}
@@ -111,8 +111,96 @@ Task2 & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}
 Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}2\\2\end{tabular}   \\ \hline 
 \textbf{Total Team} & & \textbf{XXX hours}  \\ \hline 
 \end{tabular}
-\caption{Estimated working time}
 \end{table}
+\section{Unsere Ausgangssituationen}
+\subsubsection{Hannah}
+Betriebsystem: Windows 8.1 \\
+Datenbank: Mysql Version 14.14, Distribution 5.5.40 \\
+Datenbank laeuft auf VM: Ubuntu 14.04 LTS mit der IP 192.168.117.131
+\subsubsection{Martin}
 
 \section{Theorie Backup}
+\subsection{Allgemein} \todo{Section weg sondern als text unter Section}
+Vorkerungen um im Bedarfsfall eine Wiederherstellung durchfuehren zu koennen -> Datensicherungskonzept
+\subsection{Die 5 W Fragen} \todo{Bessere bennenung.}
+\subsubsection{Warum braucht man Backups?}
+Backups werden benoetigt, um nach einem Ausfall eine Wiederherstellung (Recovery) durchfuehren zu koennen.
+Somit kann ein Datenverlust vermieden werden, was besonders wichtig ist, denn Daten gelten in der heutigen Zeit als eines der Wichtigsten Assets eines Unternehmens.
+\subsubsection{Wofuer braucht man Backups?}
+\textbf{Datensicherung} \\
+
+
+\textbf{Archivierung}	\\
+\subsubsection{Was wird gesichtert? - Logisches Backup vs. Physiches Backup}
+\textbf{Logisches Backup} \\
+(DDL - Script) + Inserts
+\textbf{Physiches Backup} \\
+(01010101110111...) 
+\textbf{Vergleich} \\
+Logische Datensicherung braucht mehr platz
+Insert into values ‘2014-11-26’ = (20 + x) * 2 Bytes
+TIMESTAMP - LONG - 8 Byte 
+Vorteil der Logischen: Struktur vorhanden, leichter verwendbar
+
+\subsubsection{Wie wird gesichtert?}
+\textbf{Komplettsicherung} 
+Alle Daten jedes mal 
+ \textbf{Differenzsicherung}
+ nur die Aenderungen werden abgespeichert
+
+\textbf{Inkrementelle Sicherung} 
+- Alles und alle Aenderungen
+(Aenderungen 1, 2, 3, … werden abgespeichert und muessen in der richtigen Reihenfolge eingespeichert werden)
+\subsubsection{Wann wird gesichtert?}
+
+\textbf{Online 'hot'} \\
+\textbf{Offline 'cold'} \\
+\textbf{Vergleich} \\
+Online ‘hot’ : komplitzierter (je nach einzel oder mehrbenutzer Betrieb)
+Offline ‘cold’ :  schneller, sicherer
+
+
+
+
+
+
+\subsection{Online Backup}
+
+\section{Speichern der Datenbanken in eine Datei}
+\subsection{Mysql}
+\subsubsection{Speichern einer Datenbank in eine Datei mit Datenbankstruktur}
+\subsubsection{Speichern einer Datenbank in eine Datei ohne Datenbankstruktur}
+\subsubsection{Speichern mehrerer Datenbanken in eine Datei mit Datenbankstruktur}
+\subsubsection{Speichern mehrerer Datenbanken in eine Datei ohne Datenbankstruktur}
+\subsubsection{Speichern aller Datenbanken in eine Datei mit Datenbankstruktur}
+\subsubsection{Speichern aller Datenbanken in eine Datei ohne Datenbankstruktur}
+\subsubsection{Speichern von Triggern / Stored Routines}
+\subsubsection{Drop Klauseln}
+
+\subsection{Psql}
+\subsubsection{Speichern einer Datenbank in eine Datei mit Datenbankstruktur}
+\subsubsection{Speichern einer Datenbank in eine Datei ohne Datenbankstruktur}
+\subsubsection{Speichern mehrerer Datenbanken in eine Datei mit Datenbankstruktur}
+\subsubsection{Speichern mehrerer Datenbanken in eine Datei ohne Datenbankstruktur}
+\subsubsection{Speichern aller Datenbanken in eine Datei mit Datenbankstruktur}
+\subsubsection{Speichern aller Datenbanken in eine Datei ohne Datenbankstruktur}
+\subsubsection{Speichern von Triggern / Stored Routines}
+\subsubsection{Drop Klauseln}
+\section{Online Backup}
+\subsection{Mysql}
+\subsection{Psql}
+
+\section{Remote Backups}
+% 2 Moeglichkeiten!
+
+\section{Automatisierung von Backups}
+\subsection{Mysql}
+\subsubsection{Uhrzeit als Trigger}
+\subsubsection{Verwendung eines Zeitstempels zur Speicherung des Dumps}
+\subsection{Psql}
+\subsubsection{Uhrzeit als Trigger}
+\subsubsection{Verwendung eines Zeitstempels zur Speicherung des Dumps}
+
+
+
 \end{document}
