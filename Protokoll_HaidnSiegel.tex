@@ -76,7 +76,7 @@ right  = 3cm]{geometry}
 \ohead{\headmark}
 \ifoot{© Haidn, Siegel}
 \ofoot{\pagemark /\pageref{LastPage}}
-
+\tableofcontents
 \section{Aufgabenstellung}
 Untersuchen Sie die Backup-Tools von MySQL (mysqldump, mysqlhotcopy, ibbackup) und PostgreSQL (pg\_dump) und lösen Sie folgende Aufgaben:
 \\ \\
@@ -112,12 +112,12 @@ Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}
 \textbf{Total Team} & & \textbf{XXX hours}  \\ \hline 
 \end{tabular}
 \end{table}
-\section{Unsere Ausgangssituationen}
-\subsubsection{Hannah}
+\section{Ausgangssituationen}
+\subsection{Hannah}
 Betriebsystem: Windows 8.1 \\
 Datenbank: Mysql Version 14.14, Distribution 5.5.40 \\
 Datenbank laeuft auf VM: Ubuntu 14.04 LTS mit der IP 192.168.117.131
-\subsubsection{Martin}
+\subsection{Martin}
 
 \section{Theorie Backup}
 \subsection{Allgemein} \todo{Section weg sondern als text unter Section}
@@ -163,11 +163,22 @@ Offline ‘cold’ :  schneller, sicherer
 
 
 
-
 \subsection{Online Backup}
 
 \section{Speichern der Datenbanken in eine Datei}
 \subsection{Mysql}
+
+
+
+---------------------------------
+	
+
+
+backup mysqldump -u root -p [database\_name] > dumpfilename.sql
+password:
+
+restore mysql -u root -p [database\_name] < dumpfilename.sql
+password:
 \subsubsection{Speichern einer Datenbank in eine Datei mit Datenbankstruktur}
 \subsubsection{Speichern einer Datenbank in eine Datei ohne Datenbankstruktur}
 \subsubsection{Speichern mehrerer Datenbanken in eine Datei mit Datenbankstruktur}
@@ -202,5 +213,45 @@ Offline ‘cold’ :  schneller, sicherer
 \subsubsection{Verwendung eines Zeitstempels zur Speicherung des Dumps}
 
 
+\section{Problems}
 
+
+\subsection{Mysql connection didn't work out}
+When tring to connect to the mysql Database, the following error was thrown:
+\texttt{ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'} \\
+The following steps had to be done: \\
+\\ 
+\begin{enumerate}
+\item Super user or sudo should be used. (\texttt{sudo su}) 
+\item The file \texttt{/etc/mysql/my.cnf} must be opened 
+\item The bind address had to be changed to \texttt{127.0.0.1}
+\item Then \texttt{service mysql restart} must be executed
+\end{enumerate}
+\cite{mysqlProblem1}
+
+
+
+\subsection{Easy Bibliography}
+\begin{thebibliography}{56}
+
+  
+ \bibitem{mysqlProblem1} 
+  \textbf{ERROR 2002: Can't connect to local MySQL server through socket \\ StackOverflow} \\ Peter Mortensen Apr 13 at 10:45 and  rshahriar Oct 11 '12 at 6:27 \\
+  \textit{http://stackoverflow.com/questions/11657829/error-2002-hy000-cant-connect-to-local-mysql-server-through-socket-var-run}
+  \newline last used: 2014.12.05, 13:15
+ 
+ \bibitem{mysqldumpman} 
+  \textbf{Mysql Manual 5.5}, mysqldump — A Database Backup Program\\
+  \textit{http://dev.mysql.com/doc/refman/5.5/en/mysqldump.html}
+  \newline last used: 2014.12.05, 13:55
+  
+   \bibitem{mysqldumpman} 
+  \textbf{Mysql Manual 5.5}, mysqldump — A Database Backup Program\\
+  \textit{http://dev.mysql.com/doc/refman/5.5/en/mysqldump.html}
+  \newline last used: 2014.12.05, 13:55
+  
+
+
+
+\end{thebibliography}
 \end{document}
