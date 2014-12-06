@@ -1,48 +1,46 @@
 \select@language {english}
 \contentsline {section}{\numberline {1}Aufgabenstellung}{2}
-\contentsline {section}{\numberline {2}Arbeitszeit}{2}
-\contentsline {section}{\numberline {3}Ausgangssituationen}{2}
-\contentsline {subsection}{\numberline {3.1}Hannah}{2}
+\contentsline {section}{\numberline {2}Working time}{2}
+\contentsline {subsection}{\numberline {2.1}Estimated}{2}
+\contentsline {subsection}{\numberline {2.2}End}{3}
+\contentsline {section}{\numberline {3}Ausgangssituationen}{3}
+\contentsline {subsection}{\numberline {3.1}Hannah}{3}
 \contentsline {subsection}{\numberline {3.2}Martin}{3}
-\contentsline {section}{\numberline {4}Theorie Backup}{3}
-\contentsline {subsection}{\numberline {4.1}Allgemein}{3}
-\contentsline {subsection}{\numberline {4.2}Die 5 W Fragen}{3}
-\contentsline {subsubsection}{\numberline {4.2.1}Warum braucht man Backups?}{3}
-\contentsline {subsubsection}{\numberline {4.2.2}Wofuer braucht man Backups?}{3}
-\contentsline {subsubsection}{\numberline {4.2.3}Was wird gesichtert? - Logisches Backup vs. Physiches Backup}{3}
-\contentsline {subsubsection}{\numberline {4.2.4}Wie wird gesichtert?}{3}
-\contentsline {subsubsection}{\numberline {4.2.5}Wann wird gesichtert?}{3}
-\contentsline {subsection}{\numberline {4.3}Online Backup}{3}
-\contentsline {section}{\numberline {5}Speichern der Datenbanken in eine Datei}{3}
-\contentsline {subsection}{\numberline {5.1}Mysql}{3}
-\contentsline {subsubsection}{\numberline {5.1.1}Speichern einer Datenbank in eine Datei mit Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.1.2}Speichern einer Datenbank in eine Datei ohne Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.1.3}Speichern mehrerer Datenbanken in eine Datei mit Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.1.4}Speichern mehrerer Datenbanken in eine Datei ohne Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.1.5}Speichern aller Datenbanken in eine Datei mit Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.1.6}Speichern aller Datenbanken in eine Datei ohne Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.1.7}Speichern von Triggern / Stored Routines}{5}
-\contentsline {subsubsection}{\numberline {5.1.8}Drop Klauseln}{5}
-\contentsline {subsection}{\numberline {5.2}Psql}{5}
-\contentsline {subsubsection}{\numberline {5.2.1}Speichern einer Datenbank in eine Datei mit Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.2.2}Speichern einer Datenbank in eine Datei ohne Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.2.3}Speichern mehrerer Datenbanken in eine Datei mit Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.2.4}Speichern mehrerer Datenbanken in eine Datei ohne Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.2.5}Speichern aller Datenbanken in eine Datei mit Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.2.6}Speichern aller Datenbanken in eine Datei ohne Datenbankstruktur}{5}
-\contentsline {subsubsection}{\numberline {5.2.7}Speichern von Triggern / Stored Routines}{5}
-\contentsline {subsubsection}{\numberline {5.2.8}Drop Klauseln}{5}
-\contentsline {section}{\numberline {6}Online Backup}{5}
-\contentsline {subsection}{\numberline {6.1}Mysql}{5}
-\contentsline {subsection}{\numberline {6.2}Psql}{5}
-\contentsline {section}{\numberline {7}Remote Backups}{5}
-\contentsline {section}{\numberline {8}Automatisierung von Backups}{5}
-\contentsline {subsection}{\numberline {8.1}Mysql}{5}
-\contentsline {subsubsection}{\numberline {8.1.1}Uhrzeit als Trigger}{5}
-\contentsline {subsubsection}{\numberline {8.1.2}Verwendung eines Zeitstempels zur Speicherung des Dumps}{5}
-\contentsline {subsection}{\numberline {8.2}Psql}{5}
-\contentsline {subsubsection}{\numberline {8.2.1}Uhrzeit als Trigger}{5}
-\contentsline {subsubsection}{\numberline {8.2.2}Verwendung eines Zeitstempels zur Speicherung des Dumps}{5}
-\contentsline {section}{\numberline {9}Problems}{5}
-\contentsline {subsection}{\numberline {9.1}Mysql connection didn't work out}{5}
-\contentsline {subsection}{\numberline {9.2}Easy Bibliography}{6}
+\contentsline {section}{\numberline {4}Backups general}{4}
+\contentsline {subsection}{\numberline {4.1}Why should backups be done?}{4}
+\contentsline {subsection}{\numberline {4.2}Logical versus physical backups}{4}
+\contentsline {subsection}{\numberline {4.3}Full versus incremental backups}{5}
+\contentsline {subsubsection}{\numberline {4.3.1}Online versus Offline backups}{5}
+\contentsline {section}{\numberline {5}Saving into a File}{6}
+\contentsline {subsection}{\numberline {5.1}Mysql}{6}
+\contentsline {subsubsection}{\numberline {5.1.1}Mysqldump}{6}
+\contentsline {subsubsection}{\numberline {5.1.2}Speichern einer Datenbank in eine Datei ohne Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.1.3}Speichern mehrerer Datenbanken in eine Datei mit Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.1.4}Speichern mehrerer Datenbanken in eine Datei ohne Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.1.5}Speichern aller Datenbanken in eine Datei mit Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.1.6}Speichern aller Datenbanken in eine Datei ohne Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.1.7}Speichern von Triggern / Stored Routines}{8}
+\contentsline {subsubsection}{\numberline {5.1.8}Drop Klauseln}{8}
+\contentsline {subsection}{\numberline {5.2}Psql}{8}
+\contentsline {subsubsection}{\numberline {5.2.1}Speichern einer Datenbank in eine Datei mit Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.2.2}Speichern einer Datenbank in eine Datei ohne Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.2.3}Speichern mehrerer Datenbanken in eine Datei mit Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.2.4}Speichern mehrerer Datenbanken in eine Datei ohne Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.2.5}Speichern aller Datenbanken in eine Datei mit Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.2.6}Speichern aller Datenbanken in eine Datei ohne Datenbankstruktur}{8}
+\contentsline {subsubsection}{\numberline {5.2.7}Speichern von Triggern / Stored Routines}{8}
+\contentsline {subsubsection}{\numberline {5.2.8}Drop Klauseln}{8}
+\contentsline {section}{\numberline {6}Online Backup}{8}
+\contentsline {subsection}{\numberline {6.1}Mysql}{8}
+\contentsline {subsection}{\numberline {6.2}Psql}{8}
+\contentsline {section}{\numberline {7}Remote Backups}{8}
+\contentsline {section}{\numberline {8}Automatisierung von Backups}{8}
+\contentsline {subsection}{\numberline {8.1}Mysql}{8}
+\contentsline {subsubsection}{\numberline {8.1.1}Uhrzeit als Trigger}{8}
+\contentsline {subsubsection}{\numberline {8.1.2}Verwendung eines Zeitstempels zur Speicherung des Dumps}{8}
+\contentsline {subsection}{\numberline {8.2}Psql}{8}
+\contentsline {subsubsection}{\numberline {8.2.1}Uhrzeit als Trigger}{8}
+\contentsline {subsubsection}{\numberline {8.2.2}Verwendung eines Zeitstempels zur Speicherung des Dumps}{8}
+\contentsline {section}{\numberline {9}Problems}{8}
+\contentsline {subsection}{\numberline {9.1}Mysql connection didn't work out}{8}
+\contentsline {subsection}{\numberline {9.2}Easy Bibliography}{9}

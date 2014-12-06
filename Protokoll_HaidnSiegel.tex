@@ -19,10 +19,37 @@ bottom = 3cm,
 left   = 3cm,
 right  = 3cm]{geometry}
 \setcounter{secnumdepth}{4}
-\title{3rd Sprint}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
 
-\author{RoboNav}
-\date{\today}
+\newcommand{\executeiffilenewer}[3]{%
+\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+{\pdffilemoddate{#2}}>0%
+{\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[1]{%
+\executeiffilenewer{#1.svg}{#1.pdf}%
+{inkscape -z -D --file=#1.pdf --export-pdf=#1.pdf --export-latex}%
+\input{#1.pdf_tex}%
+}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
 
 
 \begin{document}
@@ -75,7 +102,7 @@ right  = 3cm]{geometry}
 \pagenumbering{arabic}
 \ohead{\headmark}
 \ifoot{© Haidn, Siegel}
-\ofoot{\pagemark /\pageref{LastPage}}
+\ofoot{\pagemark}
 \tableofcontents
 \section{Aufgabenstellung}
 Untersuchen Sie die Backup-Tools von MySQL (mysqldump, mysqlhotcopy, ibbackup) und PostgreSQL (pg\_dump) und lösen Sie folgende Aufgaben:
@@ -97,15 +124,29 @@ Bitte in Zweier-Teams arbeiten, alle im Team mitarbeitenden Autoren müssen aber
 Arbeitsaufwand ca. 10 Stunden pro Team.  \\
 Präsentation am 9.12.2014
 
-\section{Arbeitszeit}
+\section{Working time}
+\subsection{Estimated}
 \begin{table}[h]
 
+\begin{tabular}{|p{0.5\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+\hline
+\textbf{Task}    & \textbf{Person}                                               & \textbf{Time in hours                              } \\ \hline \hline
+Setting up the Databases & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
+Getting some informations about backups & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 1\end{tabular}    \\ \hline 
+mysqldump & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 2\end{tabular}    \\ \hline 
+
+\hline \hline
+Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}2\\2\end{tabular}   \\ \hline 
+\textbf{Total Team} & & \textbf{XXX hours}  \\ \hline 
+\end{tabular}
+\end{table}
+\subsection{End}
+\begin{table}[h]
 \begin{tabular}{|p{0.4\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
 \hline
 \textbf{Task}    & \textbf{Person}                                               & \textbf{Time in hours                              } \\ \hline \hline
-Aufsetzten und ueberpfruefen der Datenbanken & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
+Setting up the Databases & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}0.5\\ 2\end{tabular}    \\ \hline 
 
-Task2 & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ 
 
 \hline \hline
 Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}2\\2\end{tabular}   \\ \hline 
@@ -118,68 +159,129 @@ Betriebsystem: Windows 8.1 \\
 Datenbank: Mysql Version 14.14, Distribution 5.5.40 \\
 Datenbank laeuft auf VM: Ubuntu 14.04 LTS mit der IP 192.168.117.131
 \subsection{Martin}
-
-\section{Theorie Backup}
-\subsection{Allgemein} \todo{Section weg sondern als text unter Section}
-Vorkerungen um im Bedarfsfall eine Wiederherstellung durchfuehren zu koennen -> Datensicherungskonzept
-\subsection{Die 5 W Fragen} \todo{Bessere bennenung.}
-\subsubsection{Warum braucht man Backups?}
-Backups werden benoetigt, um nach einem Ausfall eine Wiederherstellung (Recovery) durchfuehren zu koennen.
-Somit kann ein Datenverlust vermieden werden, was besonders wichtig ist, denn Daten gelten in der heutigen Zeit als eines der Wichtigsten Assets eines Unternehmens.
-\subsubsection{Wofuer braucht man Backups?}
-\textbf{Datensicherung} \\
-
-
-\textbf{Archivierung}	\\
-\subsubsection{Was wird gesichtert? - Logisches Backup vs. Physiches Backup}
-\textbf{Logisches Backup} \\
-(DDL - Script) + Inserts
-\textbf{Physiches Backup} \\
-(01010101110111...) 
-\textbf{Vergleich} \\
-Logische Datensicherung braucht mehr platz
-Insert into values ‘2014-11-26’ = (20 + x) * 2 Bytes
-TIMESTAMP - LONG - 8 Byte 
-Vorteil der Logischen: Struktur vorhanden, leichter verwendbar
-
-\subsubsection{Wie wird gesichtert?}
-\textbf{Komplettsicherung} 
-Alle Daten jedes mal 
- \textbf{Differenzsicherung}
- nur die Aenderungen werden abgespeichert
-
-\textbf{Inkrementelle Sicherung} 
-- Alles und alle Aenderungen
-(Aenderungen 1, 2, 3, … werden abgespeichert und muessen in der richtigen Reihenfolge eingespeichert werden)
-\subsubsection{Wann wird gesichtert?}
-
-\textbf{Online 'hot'} \\
-\textbf{Offline 'cold'} \\
-\textbf{Vergleich} \\
-Online ‘hot’ : komplitzierter (je nach einzel oder mehrbenutzer Betrieb)
-Offline ‘cold’ :  schneller, sicherer
+\newpage
+\section{Backups general}
+\subsection{Why should backups be done?}
+After a drop-out, a recovery must me done. \\
+To avoid a loss of data, a backup must be done before an drop-out occurs and it always should be current. \\ \\
+Backups are not only needed for recovery purposes, but also for archival storage purposes.
+\subsection{Logical versus physical backups}
+Logical backups save information represented as logical database structure (e.g. \texttt{Create Database}, \texttt{Create Table}  statements) and content (e.g \texttt{Insert} statements). Physical backups consist of raw copies of the directories and files that store database contents. \\ \\
+Logical backups :
+\begin{enumerate}
+\item Backup is done by querying the MySQL server
+\item Slower than physical methods
+\item Output is larger than physical methods
+\item The Backup and the Restore can be done either for all databases (server level), only for one database (database level) or only for specific tables (table level)
+\item Doesent include log or config files
+\item Backups are mostly done with the database still running
+\item Can be easily imported
+\item Backups stored in logical format are machine independent!
+\end{enumerate}\cite{mysqlbackupandrectypesman}
+\\ \\Physical backups :
+\begin{enumerate}
+\item Exact copy of database files which are stored on the disk
+\item Output is more compact than logical ones
+\item The granularity of the data that can be stored depends on the engine (e.g. InnoDb shares files with other tables..) 
+\item Can include log or config files
+\item Backups stored in logical format are machine dependent!
+\item Backups are seldom done with the database running, and if then the database files must be locked.
+\item Can be easily imported
+\end{enumerate} \cite{mysqlbackupandrectypesman}
+\subsection{Full versus incremental backups}
+"Some file system implementations enable “snapshots” to be taken. These provide logical copies of the file system at a given point in time, without requiring a physical copy of the entire file system. [..] MySQL itself does not provide the capability for taking file system snapshots. It is available through third-party solutions such as Veritas, LVM, or ZFS.", \cite{mysqlbackupandrectypesman}
+\\ \
+"A full backup includes all data managed by a MySQL server at a given point in time. An incremental backup consists of the changes made to the data during a given time span (from one point in time to another). MySQL has different ways to perform full backups, such as those described earlier in this section. Incremental backups are made possible by enabling the server's binary log, which the server uses to record data changes. \\
+Incremental recovery is recovery of changes made during a given time span. This is also called point-in-time recovery because it makes a server's state current up to a given time. Point-in-time recovery is based on the binary log and typically follows a full recovery from the backup files that restores the server to its state when the backup was made. Then the data changes written in the binary log files are applied as incremental recovery to redo data modifications and bring the server up to the desired point in time.", \cite{mysqlbackupandrectypesman}
 
 
-
-
-
-\subsection{Online Backup}
-
-\section{Speichern der Datenbanken in eine Datei}
+%\textbf{Komplettsicherung} 
+%Alle Daten jedes mal 
+% \textbf{Differenzsicherung}
+% nur die Aenderungen werden abgespeichert
+%\textbf{Inkrementelle Sicherung} 
+%- Alles und alle Aenderungen
+%(Aenderungen 1, 2, 3, … werden abgespeichert und muessen in der richtigen Reihenfolge eingespeichert werden)
+\subsubsection{Online versus Offline backups}
+Online backups, also called hot backups, take place while the server is running so that the database can still be used.\\
+Offline backups, also called cold backups, take place while the server is not running and therefore the database is not availiable. \\ \\
+Online backups :
+\begin{enumerate}
+\item Clients can still access the database
+\item The backup must be made carefully, in order to secure, that the clients have not changed informations in the mean time that could compromise the backup's integrity
+\end{enumerate} \cite{mysqlbackupandrectypesman}\\ \\
+Offline backups :
+\begin{enumerate}
+\item Clients can not access the database
+\item The backup is easier
+\end{enumerate}
+A similar distinction between online and offline applies for recovery operations.
+ \cite{mysqlbackupandrectypesman}
+\newpage
+\section{Saving into a File}
 \subsection{Mysql}
+\subsubsection{Mysqldump}
+Mysql has an option called mysqldump. Mysql dump can connect to local or remote servers.\cite{mysqlbackupandrectypesman}
+\\ \\
+To do a backup from only one database, the following command needs to be executed: \\
+\texttt{ mysqldump -u root -p [database\_name] \textgreater ~dumpfilename.sql } \\
+After typing in the password, a file will be available which, in this case is called \texttt{dumpfilename.sql}.\\ The content of the dumpfile is the following:
+\begin{lstlisting}    
+-- MySQL dump 10.13  Distrib 5.5.40, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: insy1
+-- ------------------------------------------------------
+-- Server version	5.5.40-0ubuntu0.14.04.1
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Table structure for table `Abteilung`
+--
 
----------------------------------
-	
-
-
-backup mysqldump -u root -p [database\_name] > dumpfilename.sql
-password:
-
-restore mysql -u root -p [database\_name] < dumpfilename.sql
-password:
-\subsubsection{Speichern einer Datenbank in eine Datei mit Datenbankstruktur}
+DROP TABLE IF EXISTS `Abteilung`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Abteilung` (
+  `aname` varchar(255) NOT NULL,
+  `sync_state` enum('current','old','new','syncing','deleting') NOT NULL DEFAULT 'new',
+  PRIMARY KEY (`aname`,`sync_state`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+...
+\end{lstlisting}    
+Even trough that in this case there is only one create table command, there is a lot of bulk. \\
+In the next example, the Inserts into a table can be seen, and here it actually is not too much bulk.
+Still, whenever saving a database dump like this, the file will be quite big, which might be a big disadvantage! 
+\begin{lstlisting}    
+INSERT INTO `Person` VALUES 
+('Aly','Ahmed','Facility Management','Doppelte gasse','current'),
+('Dominik','Scholz','IT','Schwarze gasse','current'),
+('Elias','Frantar','Kindergarten','Heiligenstadt gasse','current'),
+('Hannah','Siegel','HR','Max Kahrer gasse','current'),
+('Jakob','Saxinger','Kueche','Max Soundso gasse','current'),
+('Martin','Haidn','Managment','Gruene gasse','current'),...
+\end{lstlisting}    
+After having dropped the database, the following commad was restoring the data. this has worked out fine:
+To do a backup from only one database, the following command needs to be executed: \\
+\texttt{mysql -u root -p [database\_name] \textless dumpfilename.sql} \\ \\
+With this type of recovery, even the triggers have been importet.
+\\ \\
+\textbf{Backup of only one table using mysqldump}\\
+\texttt{ mysqldump -u root -p [database\_name] [table\_name] \textgreater ~dumpfilename.sql } \\ \\
+\textbf{Backup of more than one database using mysqldump}\\
+\texttt{ mysqldump -u root -p --databases [database\_name1] [database\_name2] \textgreater ~dumpfilename.sql } \\ 
+\textbf{Backup of all databases using mysqldump}\\
+\texttt{ mysqldump -u root -p --all-databases \textgreater ~dumpfilename.sql }
 \subsubsection{Speichern einer Datenbank in eine Datei ohne Datenbankstruktur}
 \subsubsection{Speichern mehrerer Datenbanken in eine Datei mit Datenbankstruktur}
 \subsubsection{Speichern mehrerer Datenbanken in eine Datei ohne Datenbankstruktur}
@@ -217,7 +319,7 @@ password:
 
 
 \subsection{Mysql connection didn't work out}
-When tring to connect to the mysql Database, the following error was thrown:
+When trying to connect to the mysql Database, the following error was thrown:
 \texttt{ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'} \\
 The following steps had to be done: \\
 \\ 
@@ -250,7 +352,11 @@ The following steps had to be done: \\
   \textit{http://dev.mysql.com/doc/refman/5.5/en/mysqldump.html}
   \newline last used: 2014.12.05, 13:55
   
-
+  \bibitem{mysqlbackupandrectypesman} 
+  \textbf{Mysql Manual 5.5} Backup and Recovery Types\\
+  \textit{http://dev.mysql.com/doc/refman/5.5/en/backup-types.html}
+  \newline last used: 2014.12.06, 19:01
+  
 
 
 \end{thebibliography}
