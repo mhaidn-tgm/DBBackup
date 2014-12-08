@@ -104,7 +104,7 @@ right  = 3cm]{geometry}
 \ifoot{© Haidn, Siegel}
 \ofoot{\pagemark}
 \tableofcontents
-\section{Aufgabenstellung}
+\section{Task description}
 Untersuchen Sie die Backup-Tools von MySQL (mysqldump, mysqlhotcopy, ibbackup) und PostgreSQL (pg\_dump) und lösen Sie folgende Aufgaben:
 \\ \\
 Finden und dokumentieren Sie (für ihr System OS/DBMS) die etsprechenden Optionen der Tools für folgende Anforderungen: \\
@@ -134,6 +134,9 @@ Präsentation am 9.12.2014
 Setting up the Databases & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
 Getting some informations about backups & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 1\end{tabular}    \\ \hline 
 mysqldump & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 2\end{tabular}    \\ \hline 
+mysqlbackup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}0\\ 2\end{tabular}    \\ \hline 
+system-level commands & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 0\end{tabular}    \\ \hline 
+mysqlhotcopy & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1.5\\ 1.5\end{tabular}    \\ \hline 
 
 \hline \hline
 Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}2\\2\end{tabular}   \\ \hline 
@@ -153,12 +156,14 @@ Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}
 \textbf{Total Team} & & \textbf{XXX hours}  \\ \hline 
 \end{tabular}
 \end{table}
-\section{Ausgangssituationen}
+\FloatBarrier
+\section{Working situation}
 \subsection{Hannah}
-Betriebsystem: Windows 8.1 \\
-Datenbank: Mysql Version 14.14, Distribution 5.5.40 \\
-Datenbank laeuft auf VM: Ubuntu 14.04 LTS mit der IP 192.168.117.131
+OS: Windows 8.1 \\
+Database: Mysql Version 14.14, Distribution 5.5.40 \\
+VM on which the DB runs: Ubuntu 14.04 LTS , it's IP: 192.168.117.131
 \subsection{Martin}
+\todo{martin}
 \newpage
 \section{Backups general}
 \subsection{Why should backups be done?}
@@ -218,14 +223,14 @@ Offline backups :
 A similar distinction between online and offline applies for recovery operations.
  \cite{mysqlbackupandrectypesman}
 \newpage
-\section{Saving into a File}
-\subsection{Mysql}
-\subsubsection{Mysqldump}
+\section{Mysql Backup}
+\subsection{Logical Backup into Files with mysqldump}
 Mysql has an option called mysqldump. Mysql dump can connect to local or remote servers.\cite{mysqlbackupandrectypesman}
-\\ \\
+\subsubsection{Performing a database dump}
 To do a backup from only one database, the following command needs to be executed: \\
 \texttt{ mysqldump -u root -p [database\_name] \textgreater ~dumpfilename.sql } \\
-After typing in the password, a file will be available which, in this case is called \texttt{dumpfilename.sql}.\\ The content of the dumpfile is the following:
+After typing in the password, a file will be available which, in this case is called \texttt{dumpfilename.sql}.\\ 
+The content of the dumpfile is the following:
 \begin{lstlisting}    
 -- MySQL dump 10.13  Distrib 5.5.40, for debian-linux-gnu (x86_64)
 --
@@ -271,52 +276,159 @@ INSERT INTO `Person` VALUES
 ('Jakob','Saxinger','Kueche','Max Soundso gasse','current'),
 ('Martin','Haidn','Managment','Gruene gasse','current'),...
 \end{lstlisting}    
-After having dropped the database, the following commad was restoring the data. this has worked out fine:
-To do a backup from only one database, the following command needs to be executed: \\
-\texttt{mysql -u root -p [database\_name] \textless dumpfilename.sql} \\ \\
-With this type of recovery, even the triggers have been importet.
-\\ \\
 \textbf{Backup of only one table using mysqldump}\\
 \texttt{ mysqldump -u root -p [database\_name] [table\_name] \textgreater ~dumpfilename.sql } \\ \\
 \textbf{Backup of more than one database using mysqldump}\\
 \texttt{ mysqldump -u root -p --databases [database\_name1] [database\_name2] \textgreater ~dumpfilename.sql } \\ 
 \textbf{Backup of all databases using mysqldump}\\
-\texttt{ mysqldump -u root -p --all-databases \textgreater ~dumpfilename.sql }
-\subsubsection{Speichern einer Datenbank in eine Datei ohne Datenbankstruktur}
-\subsubsection{Speichern mehrerer Datenbanken in eine Datei mit Datenbankstruktur}
-\subsubsection{Speichern mehrerer Datenbanken in eine Datei ohne Datenbankstruktur}
-\subsubsection{Speichern aller Datenbanken in eine Datei mit Datenbankstruktur}
-\subsubsection{Speichern aller Datenbanken in eine Datei ohne Datenbankstruktur}
-\subsubsection{Speichern von Triggern / Stored Routines}
-\subsubsection{Drop Klauseln}
+\texttt{ mysqldump -u root -p --all-databases \textgreater ~dumpfilename.sql } \\ \\
+\textbf{Backup of only the structure without any data}\\
+\texttt{mysqldump -u root -p [-d|--no-data] [database\_name] \textgreater ~dumpfilename.sql }
+\subsubsection{Drop statements}
+If drop-statements should be added, the following parameters can simply be added:
+\begin{table}[h]
+\begin{tabular}{ll}
+\textbf{Format}     & \textbf{Description}                                                \\
+--add-drop-database & Adds a DROP DATABASE statement before each CREATE DATABASE statement \\
+--add-drop-table    & Adds a DROP TABLE statement before each CREATE TABLE statement       \\
+\end{tabular}
+\end{table} \cite{mysqldumpman}
+The option \texttt{--add-drop-trigger} was supported in version 5.1, but it is not availiable anymore in 5.5:  
+\begin{lstlisting}    
+root@ubuntu:/var/lib/mysql# mysqldump -u root -p insy2 --add-drop-trigger > df1.sql
+mysqldump: unknown option '--add-drop-trigger' 
+\end{lstlisting}    
+\subsubsection{Performing a data restore}
+After having dropped the database, the following commad was restoring the data. this has worked out fine:
+To do a backup from only one database, the following command needs to be executed: \\
+\texttt{mysql -u root -p [database\_name] \textless dumpfilename.sql} \\ \\
+With this type of recovery, even the triggers have been imported.
+\newpage
+\subsection{Physical backup with mysqlbackup}
+Mysql is only available for the mysql Enterprise Edition.
+\todo{more information}
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{pictures/mysqlentbackup}
+		\caption{Difference between mysqlbackup and mysqldump \cite{mysqlenterprisebackup}}
+		\label{differenceent}
+	\end{center}
+\end{figure}\FloatBarrier
+\subsection{Restoring from another Database}
+Also, a database could be copied from another using these commands.
+We have tried this out an it worked.
+\begin{lstlisting}    
+MyISAM:
+CREATE TABLE db2.mytable LIKE db1.mytable;
+ALTER TABLE db2.mytable DISABLE KEYS;
+INSERT INTO db2.mytable SELECT * FROM db1.mytable;
+ALTER TABLE db2.mytable ENABLE KEYS;
+ \end{lstlisting}    
+ \begin{lstlisting}    
+INNODB:
+CREATE TABLE db2.mytable LIKE db1.mytable;
+INSERT INTO db2.mytable SELECT * FROM db1.mytable;
+  \end{lstlisting}    
+\cite{so1}
+\subsection{Physical backup using File system commands}
+\label{sec:cpmysql}
+In Order to copy the files, the location must be found out. This can be done with the \texttt{select @@datadir} command within mysql.
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.4\linewidth]{pictures/datadir_mysql}
+		\caption{Output of the select @@datadir command}
+		\label{differenceent}
+	\end{center}
+\end{figure}
+\FloatBarrier
+In figure \ref{content}, the content of the insy1 database can be seen. The only MyISAM table is 'Logged'.\\
+Also, each trigger has its own file.
+\FloatBarrier
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{pictures/ls_mysql_insy1}
+		\caption{Content of the ver/etc/mysql folder}
+		\label{content}
+	\end{center}
+\end{figure}
+\FloatBarrier
+\subsubsection{MyISAM}
+Copying files when using a MyISAM Database, is possible, because every Table maps to exactly one file. \\
+"However, you cannot just move the .frm. You must move all components.", \cite{so1} \\
+There are three files (see also in figure \ref{content}) which have something to do with the table:
+\begin{itemize}
+\item /var/lib/mysql/insy1/Logged.frm
+\item /var/lib/mysql/insy1/Logged.MYD (Table Database)
+\item /var/lib/mysql/insy1/Logged.MYI (Table Indexes)
+\end{itemize}
+When simply coping these files, dropping the table and coping them back, \\ and then calling a \texttt{Select * from Logged} command, the following error message occurs:
+\begin{lstlisting}
+ ERROR 1017 (HY000): Can't find file: './insy1/Logged.frm' (errno: 13)
+\end{lstlisting}
+When searching for a solution, there are some, but mostly it says that it is really better backing mysql databases up with \texttt{mysqlhotcopy}.
+\subsubsection{InnoDB}
+On the other hand, doing a backup when coping files, is "risky (near suicidal) with InnoDB.",\cite{so1}
+Therefore, whenever using InnoDB, a backup should be done with \texttt{mysqldump}.
+\subsection{mysqlhotcopy}
+"mysqlhotcopy is a Perl script that was originally written and contributed by Tim Bunce. It uses FLUSH TABLES, LOCK TABLES, and cp or scp to make a database backup. It is a fast way to make a backup of the database or single tables, but it can be run only on the same machine where the database directories are located. mysqlhotcopy works only for backing up MyISAM and ARCHIVE tables. It runs on Unix.",\cite{mysqlhotcopyman}
+\subsubsection{Copying the files}
+Using the mysqlhotcopy is a really easy way to copy the files. In the following example, it can be seen, what command must be used and the output. \\
+\begin{lstlisting}
+hsiegel@ubuntu:~/Documents/sync_het_db/Create$ sudo /usr/bin/mysqlhotcopy -u root -p secret_password insy1 /home/hsiegel/Desktop --allowold --keepold
+Flushed 5 tables with read lock (`insy1`.`Abteilung`, `insy1`.`Logged`, `insy1`.`Person`, `insy1`.`Teilnehmer`, `insy1`.`Veranstaltung`) in 0 seconds.
+Locked 0 views () in 0 seconds.
+Copying 24 files...
+Copying indices for 0 files...
+Unlocked tables.
+mysqlhotcopy copied 5 tables (24 files) in 0 seconds (0 seconds overall).
+\end{lstlisting}
+This simply copies the files from /var/lib/mysql/insy1 to the source destination.
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{pictures/lsdesktop}
+		\caption{Content of the insy1 folder, which has been generated using mysqlhotcopy}
+		\label{content}
+	\end{center}
+\end{figure}
 
-\subsection{Psql}
-\subsubsection{Speichern einer Datenbank in eine Datei mit Datenbankstruktur}
-\subsubsection{Speichern einer Datenbank in eine Datei ohne Datenbankstruktur}
-\subsubsection{Speichern mehrerer Datenbanken in eine Datei mit Datenbankstruktur}
-\subsubsection{Speichern mehrerer Datenbanken in eine Datei ohne Datenbankstruktur}
-\subsubsection{Speichern aller Datenbanken in eine Datei mit Datenbankstruktur}
-\subsubsection{Speichern aller Datenbanken in eine Datei ohne Datenbankstruktur}
-\subsubsection{Speichern von Triggern / Stored Routines}
-\subsubsection{Drop Klauseln}
-\section{Online Backup}
-\subsection{Mysql}
-\subsection{Psql}
+\subsubsection{Restoring}
+"To restore the backup from the mysqlhotcopy backup, simply copy the files from the backup directory to the /var/lib/mysql/{db-name} directory. Just to be on the safe-side, make sure to stop the mysql before you restore (copy) the files. After you copy the files to the /var/lib/mysql/{db-name} start the mysql again.",\cite{mysqlhtcoptut}
+In our example, restoring after having done a mysqlhotcopy didn't work either, with the same error message as before:
+\begin{lstlisting}
+ ERROR 1017 (HY000): Can't find file: './insy1/Logged.frm' (errno: 13)
+\end{lstlisting}
+\subsection{Backup of Triggers / Stored Routines}
+When using mysqldump, the triggers have been saved automatically and the import has not been a problem. \\
+Because the mysqlhotcopy didn't work, we couldn't evaluate it by our selves if the triggers were restored. But normally, it should be possible using mysqlhotcopy as well.
 
-\section{Remote Backups}
-% 2 Moeglichkeiten!
+\subsection{Online Backup}
+With MySQL Enterprise Backup, a hot backup is possible. \\
+Also, mysqlhotcopy, as the name already says, is also able to perform hot backups, because the Perl script handles the locking.
+Mysqldump is executing Select statements on the database, therefore it is a hot copy as well, but in this case, it might be really slow for users and the task itself.
+\subsection{Remote Backups}
+\subsubsection{Using mysqldump to perform remote backups}
+You can specify the server name as an option to mysqldump: 
+\texttt{mysqldump --host [server\_name] [database\_name] \textgreater ~dumpfilename.sql}
+\subsubsection{Using ftp to perform remote backups}
+As described in section \ref{sec:cpmysql}, the files can simply be copied, and this process of copying can also be performed using ftp.
+\subsection{Automised Backups}
+An important way of performing backups is that they can also be automatised. This has the advantage, that the administrator doesn't has to think about doing a backup and therefore is not able to forget it, and also backups can then be scheduled at times, when the database server might not be very busy, so the backup is faster and the client do not notice that a backup task has just been performed. 
 
-\section{Automatisierung von Backups}
-\subsection{Mysql}
+
+\todo{Autobackup - needs to be tested::}
+https://www.digitalocean.com/community/tutorials/how-to-backup-mysql-databases-on-an-ubuntu-vps
+http://serverzeit.de/tutorials/backup/automysqlbackup
+http://www.bjoerne.com/mysql-backups-mit-automysqlbackup-erstellen/
+http://www.debianhelp.co.uk/mysqlscript.htm
+
 \subsubsection{Uhrzeit als Trigger}
 \subsubsection{Verwendung eines Zeitstempels zur Speicherung des Dumps}
-\subsection{Psql}
-\subsubsection{Uhrzeit als Trigger}
-\subsubsection{Verwendung eines Zeitstempels zur Speicherung des Dumps}
 
+% Bestes mysql backup tool.
 
+\todo{INKREMENTELLE BACKUPS MYSQL?????}
+\newpage
 \section{Problems}
-
 
 \subsection{Mysql connection didn't work out}
 When trying to connect to the mysql Database, the following error was thrown:
@@ -332,8 +444,7 @@ The following steps had to be done: \\
 \cite{mysqlProblem1}
 
 
-
-\subsection{Easy Bibliography}
+\newpage
 \begin{thebibliography}{56}
 
   
@@ -346,18 +457,39 @@ The following steps had to be done: \\
   \textbf{Mysql Manual 5.5}, mysqldump — A Database Backup Program\\
   \textit{http://dev.mysql.com/doc/refman/5.5/en/mysqldump.html}
   \newline last used: 2014.12.05, 13:55
-  
-   \bibitem{mysqldumpman} 
-  \textbf{Mysql Manual 5.5}, mysqldump — A Database Backup Program\\
-  \textit{http://dev.mysql.com/doc/refman/5.5/en/mysqldump.html}
-  \newline last used: 2014.12.05, 13:55
-  
+    
   \bibitem{mysqlbackupandrectypesman} 
   \textbf{Mysql Manual 5.5} Backup and Recovery Types\\
   \textit{http://dev.mysql.com/doc/refman/5.5/en/backup-types.html}
   \newline last used: 2014.12.06, 19:01
   
+  \bibitem{mysqlenterprisebackup} 
+  \textbf{Mysql Website}MySQL Enterprise Backup\\
+  \textit{http://www.mysql.com/products/enterprise/backup.html}
+  \newline last used: 2014.12.08, 10:49
+
+  \bibitem{so1} 
+  \textbf{StackOverflow}, RolandoMySQLDBA - answered Mar 7 '12 at 17:45 St\\
+  \textit{http://serverfault.com/questions/367255/linux-mysql-is-it-safe-to-copy-mysql-db-files-with-cp-command-from-one-db-to
+}
+  \newline last used: 2014.12.08, 11:39
 
 
+ \bibitem{mysqlhotcopyman} 
+  \textbf{Mysql Manual 5.5}mysqlhotcopy — A Database Backup Program\\
+  \textit{http://dev.mysql.com/doc/refman/5.5/en/mysqlhotcopy.html}
+  \newline last used: 2014.12.08, 14:16
+
+ \bibitem{mysqlhtcoptut} 
+  \textbf{Backup and Restore MySQL Database using mysqlhotcopy},  Ramesh Natarajan \\
+  \textit{http://www.thegeekstuff.com/2008/07/backup-and-restore-mysql-database-using-mysqlhotcopy/}
+  \newline last used: 2014.12.08, 14:44
+  
+  \bibitem{balbalbla} 
+  \textbf{How To Backup MySQL Databases on an Ubuntu VPS},  Justin Ellingwood \\
+  \textit{https://www.digitalocean.com/community/tutorials/how-to-backup-mysql-databases-on-an-ubuntu-vps}
+  \newline last used: 2014.12.08, 15:30
+  
+  
 \end{thebibliography}
 \end{document}

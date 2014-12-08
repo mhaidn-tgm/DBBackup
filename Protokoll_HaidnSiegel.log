@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.27)  6 DEC 2014 22:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.27)  8 DEC 2014 15:57
 entering extended mode
 **Protokoll_HaidnSiegel.tex Protokoll_HaidnSiegel.tex
 (C:\Users\hsiegel\Documents\GitHub\DBBackup\Protokoll_HaidnSiegel.tex
@@ -710,6 +710,12 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 (C:\Users\hsiegel\Documents\GitHub\DBBackup\Protokoll_HaidnSiegel.aux
 
+LaTeX Warning: Label `differenceent' multiply defined.
+
+
+LaTeX Warning: Label `content' multiply defined.
+
+
 LaTeX Warning: Label `mysqldumpman' multiply defined.
 
 )
@@ -800,21 +806,20 @@ Package pdftex.def Info: pictures/logo.jpg used on input line 64.
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/hsiegel/Document
 s/GitHub/DBBackup/pictures/logo.jpg>]
-(C:\Users\hsiegel\Documents\GitHub\DBBackup\Protokoll_HaidnSiegel.toc)
-\tf@toc=\write5
-
+(C:\Users\hsiegel\Documents\GitHub\DBBackup\Protokoll_HaidnSiegel.toc
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-0.def"
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 107.
-
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 47.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 107.
- [1]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 47.
+ [1])
+\tf@toc=\write5
+
 Underfull \hbox (badness 10000) in paragraph at lines 108--126
 
  []
@@ -843,88 +848,191 @@ Underfull \hbox (badness 10000) in paragraph at lines 108--126
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 165--168
+Underfull \hbox (badness 10000) in paragraph at lines 170--173
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--171
+Underfull \hbox (badness 10000) in paragraph at lines 174--176
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--182
+Underfull \hbox (badness 10000) in paragraph at lines 185--187
 
  []
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 ) [4]
-Underfull \hbox (badness 10000) in paragraph at lines 206--209
+Underfull \hbox (badness 10000) in paragraph at lines 211--214
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--214
+Underfull \hbox (badness 10000) in paragraph at lines 217--219
 
  []
 
 [5]
-LaTeX Font Info:    Try loading font information for OML+cmtt on input line 227
+LaTeX Font Info:    Try loading font information for OML+cmtt on input line 231
 .
-LaTeX Font Info:    No file OMLcmtt.fd. on input line 227.
+LaTeX Font Info:    No file OMLcmtt.fd. on input line 231.
 
 
 LaTeX Font Warning: Font shape `OML/cmtt/m/n' undefined
 (Font)              using `OML/cmm/m/it' instead
-(Font)              for symbol `textgreater' on input line 227.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--229
-
- []
+(Font)              for symbol `textgreater' on input line 231.
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 274--285
+Underfull \hbox (badness 10000) in paragraph at lines 279--287
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--285
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 274--285
-
- []
-
-
-Overfull \hbox (2.25548pt too wide) in paragraph at lines 274--285
+Overfull \hbox (2.25548pt too wide) in paragraph at lines 279--287
 \OT1/cmtt/m/n/10 mysqldump -u root -p --databases [database[]name1] [database[]
 name2] \OML/cmtt/m/n/10 > \OT1/cmtt/m/n/10 dumpfilename.sql
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--285
+Underfull \hbox (badness 10000) in paragraph at lines 279--287
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--326
+Underfull \hbox (badness 10000) in paragraph at lines 279--287
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--326
+Overfull \hbox (37.36674pt too wide) in paragraph at lines 290--295
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--306
 
  []
 
-[7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+[7] <pictures/mysqlentbackup.png, id=41, 401.24907pt x 465.23813pt>
+File: pictures/mysqlentbackup.png Graphic file (type png)
+
+<use pictures/mysqlentbackup.png>
+Package pdftex.def Info: pictures/mysqlentbackup.png used on input line 312.
+(pdftex.def)             Requested size: 310.50357pt x 360.0447pt.
+ [8 <C:/Users/hsiegel/Documents/GitHub/DBBackup/pictures/mysqlentbackup.png>]
+<pictures/datadir_mysql.png, id=47, 182.18062pt x 103.88812pt>
+File: pictures/datadir_mysql.png Graphic file (type png)
+
+<use pictures/datadir_mysql.png>
+Package pdftex.def Info: pictures/datadir_mysql.png used on input line 338.
+(pdftex.def)             Requested size: 177.42868pt x 101.18192pt.
+
+<pictures/ls_mysql_insy1.png, id=48, 523.9575pt x 124.21407pt>
+File: pictures/ls_mysql_insy1.png Graphic file (type png)
+
+<use pictures/ls_mysql_insy1.png>
+Package pdftex.def Info: pictures/ls_mysql_insy1.png used on input line 349.
+(pdftex.def)             Requested size: 354.86412pt x 84.12895pt.
+ [9 <C:/Users/hsiegel/Documents/GitHub/DBBackup/pictures/datadir_mysql.png> <C:
+/Users/hsiegel/Documents/GitHub/DBBackup/pictures/ls_mysql_insy1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 375--376
+
+ []
+
+<pictures/lsdesktop.png, id=54, 502.87875pt x 122.70844pt>
+File: pictures/lsdesktop.png Graphic file (type png)
+
+<use pictures/lsdesktop.png>
+Package pdftex.def Info: pictures/lsdesktop.png used on input line 388.
+(pdftex.def)             Requested size: 354.86412pt x 86.58997pt.
+ [10 <C:/Users/hsiegel/Documents/GitHub/DBBackup/pictures/lsdesktop.png>]
+
+LaTeX Warning: Reference `sec:cpmysql' on page 11 undefined on input line 413.
+
+
+Overfull \hbox (8.95026pt too wide) in paragraph at lines 418--423
+[][]\OT1/cmr/m/n/10 https://www.digitalocean.com/community/tutorials/how-to-bac
+kup-mysql-databases-on-an-ubuntu-
+ []
+
+
+Overfull \hbox (1.03358pt too wide) in paragraph at lines 418--423
+\OT1/cmr/m/n/10 vps http://serverzeit.de/tutorials/backup/automysqlbackup http:
+//www.bjoerne.com/mysql-backups-
+ []
+
+
+Overfull \hbox (32.75018pt too wide) in paragraph at lines 429--429
+[][][][]\OT1/cmr/m/n/10 INKREMENTELLE 
+ []
+
+
+Overfull \hbox (2.75012pt too wide) in paragraph at lines 429--429
+\OT1/cmr/m/n/10 MYSQL?????  
+ []
+
+
+Overfull \hbox (32.75018pt too wide) in paragraph at lines 429--429
+[][][][]\OT1/cmr/m/n/10 INKREMENTELLE 
+ []
+
+
+Overfull \hbox (2.75012pt too wide) in paragraph at lines 429--429
+\OT1/cmr/m/n/10 MYSQL?????  
+ []
+
+
+Overfull \hbox (32.75018pt too wide) in paragraph at lines 429--429
+[][][][]\OT1/cmr/m/n/10 INKREMENTELLE 
+ []
+
+
+Overfull \hbox (2.75012pt too wide) in paragraph at lines 429--429
+\OT1/cmr/m/n/10 MYSQL?????  
+ []
+
+
+Overfull \hbox (32.75018pt too wide) in paragraph at lines 429--429
+[][][][]\OT1/cmr/m/n/10 INKREMENTELLE 
+ []
+
+
+Overfull \hbox (2.75012pt too wide) in paragraph at lines 429--429
+\OT1/cmr/m/n/10 MYSQL?????  
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 434--438
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 434--438
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 452--455
 \OT1/cmr/m/it/10 http://stackoverflow.com/questions/11657829/error-2002-hy000-c
 ant-connect-to-local-mysql-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 472--476
+\OT1/cmr/m/it/10 http://serverfault.com/questions/367255/linux-mysql-is-it-safe
+-to-copy-mysql-db-files-with-cp-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 489--492
+\OT1/cmr/m/it/10 https://www.digitalocean.com/community/tutorials/how-to-backup
+-mysql-databases-on-an-
  []
 
 
@@ -935,22 +1043,25 @@ the glossaries will not be updated.
 Package glossaries Warning: No \printglossary or \printglossaries found.
 This document will not have a glossary.
 
-[9] (C:\Users\hsiegel\Documents\GitHub\DBBackup\Protokoll_HaidnSiegel.aux)
+[13] (C:\Users\hsiegel\Documents\GitHub\DBBackup\Protokoll_HaidnSiegel.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 18239 strings out of 493921
- 307535 string characters out of 3147275
- 486308 words of memory out of 3000000
- 21125 multiletter control sequences out of 15000+200000
+ 18415 strings out of 493921
+ 310816 string characters out of 3147275
+ 487308 words of memory out of 3000000
+ 21297 multiletter control sequences out of 15000+200000
  10441 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 63i,16n,72p,1754b,1173s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,16n,76p,1754b,1173s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTe
@@ -961,9 +1072,9 @@ msfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.
 pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/
 Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Protokoll_HaidnSiegel.pdf (10 pages, 191554 bytes).
+Output written on Protokoll_HaidnSiegel.pdf (14 pages, 335805 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
+ 105 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
