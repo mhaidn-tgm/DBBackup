@@ -67,15 +67,17 @@ right  = 3cm]{geometry}
 
 % Title
 \rule{14cm}{1mm}
-{ \huge \bfseries \\[0.4cm]  \huge INSY \\ \LARGE Backup mit Mysql und Postgresql \\[0.4cm] }
+{ \huge \bfseries \\[0.4cm]  \huge Haidn \& Siegel \\ \LARGE Backup with Mysql and Postgresql \\[0.4cm] }
 
 \rule{14cm}{1mm}
-
-
-
-% Author and supervisor
 \noindent 
-\vspace{7cm}
+
+\vspace{2cm}
+
+ \LARGE NOT FINISEHD YET - Postgres is missing
+  \vspace{5cm}
+
+%\vspace{7cm}
 \small
 \begin{center}
   \begin{tabular}{ | p{0.1\textwidth} | p{0.2\textwidth} | p{0.2\textwidth} | p{0.1\textwidth} | p{0.2\textwidth} |}
@@ -83,7 +85,9 @@ right  = 3cm]{geometry}
 \textbf{Version} & \textbf{Autor} & \textbf{Datum} & \textbf{Status} & \textbf{Kommentar} \\ 
     \hline 
     \hline
-0.1 & Siegel & 2014.11.28 & Draft &  Erstellung Dokument   \\ 
+0.1 & Siegel & 2014.11.28 & Draft &    \\ 
+0.2 & Siegel & 2014.12.09 & Draft &  Mysql finished  \\ 
+
     \hline
   \end{tabular}
 \end{center}
@@ -104,7 +108,7 @@ right  = 3cm]{geometry}
 \ifoot{© Haidn, Siegel}
 \ofoot{\pagemark}
 \tableofcontents
-\section{Task description}
+\section{Task description (German)}
 Untersuchen Sie die Backup-Tools von MySQL (mysqldump, mysqlhotcopy, ibbackup) und PostgreSQL (pg\_dump) und lösen Sie folgende Aufgaben:
 \\ \\
 Finden und dokumentieren Sie (für ihr System OS/DBMS) die etsprechenden Optionen der Tools für folgende Anforderungen: \\
@@ -131,39 +135,68 @@ Präsentation am 9.12.2014
 \begin{tabular}{|p{0.5\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
 \hline
 \textbf{Task}    & \textbf{Person}                                               & \textbf{Time in hours                              } \\ \hline \hline
+Setting up the Databases & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}0.5\\ 0.5\end{tabular}    \\ \hline 
+Getting some informations about backups & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
+mysqldump & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
+mysqlbackup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
+system-level commands & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
+mysqlhotcopy & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
+Automated Backup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
+Documentation & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}0.5\\ 0.5\end{tabular}    \\ \hline 
+postgres & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}5\\ 5\end{tabular}    \\ \hline 
+
+\hline \hline
+Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}12\\12\end{tabular}   \\ \hline 
+\textbf{Total Team} & & \textbf{21.5 hours}  \\ \hline 
+\end{tabular}
+\end{table}
+\newpage
+\subsection{Final}
+\begin{table}[h]
+
+\begin{tabular}{|p{0.5\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+\hline
+\textbf{Task}    & \textbf{Person}                                               & \textbf{Time in hours                              } \\ \hline \hline
 Setting up the Databases & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
 Getting some informations about backups & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 1\end{tabular}    \\ \hline 
 mysqldump & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 2\end{tabular}    \\ \hline 
 mysqlbackup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}0\\ 2\end{tabular}    \\ \hline 
 system-level commands & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 0\end{tabular}    \\ \hline 
 mysqlhotcopy & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1.5\\ 1.5\end{tabular}    \\ \hline 
+Automated Backup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1.5\\ 2\end{tabular}    \\ \hline 
+Documentation & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 2\end{tabular}    \\ \hline 
 
 \hline \hline
-Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}2\\2\end{tabular}   \\ \hline 
-\textbf{Total Team} & & \textbf{XXX hours}  \\ \hline 
-\end{tabular}
-\end{table}
-\subsection{End}
-\begin{table}[h]
-\begin{tabular}{|p{0.4\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
-\hline
-\textbf{Task}    & \textbf{Person}                                               & \textbf{Time in hours                              } \\ \hline \hline
-Setting up the Databases & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}0.5\\ 2\end{tabular}    \\ \hline 
-
-
-\hline \hline
-Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}2\\2\end{tabular}   \\ \hline 
-\textbf{Total Team} & & \textbf{XXX hours}  \\ \hline 
+Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}11\\10.5\end{tabular}   \\ \hline 
+\textbf{Total Team} & & \textbf{21.5 hours}  \\ \hline 
 \end{tabular}
 \end{table}
 \FloatBarrier
 \section{Working situation}
+\subsection{Database models}
+We were using the create scripts from the last VSDB homework. In this we had done two similar create scripts using both mysql and postgres. \\ The database contains triggers and inserts for each table.\\ The ER can be seen in figures \ref{mysqler} and \ref{pger}.
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{pictures/ERD_mysql}
+		\caption{Entity Relationship Diagram for the mysql database}
+		\label{mysqler}
+	\end{center}
+\end{figure}
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{pictures/ERD_psql}
+		\caption{Entity Relationship Diagram for the postgres database}
+		\label{pger}
+	\end{center}
+\end{figure}
+\FloatBarrier
 \subsection{Hannah}
 OS: Windows 8.1 \\
 Database: Mysql Version 14.14, Distribution 5.5.40 \\
 VM on which the DB runs: Ubuntu 14.04 LTS , it's IP: 192.168.117.131
 \subsection{Martin}
 \todo{martin}
+\newpage
 \newpage
 \section{Backups general}
 \subsection{Why should backups be done?}
@@ -412,24 +445,37 @@ You can specify the server name as an option to mysqldump:
 \subsubsection{Using ftp to perform remote backups}
 As described in section \ref{sec:cpmysql}, the files can simply be copied, and this process of copying can also be performed using ftp.
 \subsection{Automised Backups}
-An important way of performing backups is that they can also be automatised. This has the advantage, that the administrator doesn't has to think about doing a backup and therefore is not able to forget it, and also backups can then be scheduled at times, when the database server might not be very busy, so the backup is faster and the client do not notice that a backup task has just been performed. 
+An important way of performing backups is that they can also be automatised. This has the advantage, that the administrator doesn't has to think about doing a backup and therefore is not able to forget it, and also backups can then be scheduled at times, when the database server might not be very busy, so the backup is faster and the client do not notice that a backup task has just been performed.  \\
+Automised Backups with mysql are quite easy. This can be done using the tool automysqlbackup. \\
+The following commands have to be done: \\
+\texttt{sudo apt-get install automysqlbackup} \\
+\texttt{sudo automysqlbackup} \\ \\
+The main configuration file for automysqlbackup is located at \texttt{/etc/default/automysqlbackup}.
+The backups will be located at \texttt{/var/lib/automysqlbackup}. There are three folders: \texttt{daily, weekly, monthly}.
+The automised backup worked, in my daily folder, each day there is a new File.
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=1.0\linewidth]{pictures/mysql_autobackup}
+		\caption{Content of the \texttt{/var/lib/automysqlbackup} folder with two automised backups}
+		\label{content}
+	\end{center}
+\end{figure}
 
+%\todo{Autobackup - needs to be tested:: and then documented.}
+%https://www.digitalocean.com/community/tutorials/how-to-backup-mysql-databases-on-an-ubuntu-vps
+%http://serverzeit.de/tutorials/backup/automysqlbackup
+%http://www.bjoerne.com/mysql-backups-mit-automysqlbackup-erstellen/
+%http://www.debianhelp.co.uk/mysqlscript.htm
 
-\todo{Autobackup - needs to be tested::}
-https://www.digitalocean.com/community/tutorials/how-to-backup-mysql-databases-on-an-ubuntu-vps
-http://serverzeit.de/tutorials/backup/automysqlbackup
-http://www.bjoerne.com/mysql-backups-mit-automysqlbackup-erstellen/
-http://www.debianhelp.co.uk/mysqlscript.htm
+%\subsubsection{Uhrzeit als Trigger}
 
-\subsubsection{Uhrzeit als Trigger}
-\subsubsection{Verwendung eines Zeitstempels zur Speicherung des Dumps}
+%\subsubsection{Verwendung eines Zeitstempels zur Speicherung des Dumps}
 
 % Bestes mysql backup tool.
 
-\todo{INKREMENTELLE BACKUPS MYSQL?????}
+%\todo{INKREMENTELLE BACKUPS MYSQL?????}
 \newpage
 \section{Problems}
-
 \subsection{Mysql connection didn't work out}
 When trying to connect to the mysql Database, the following error was thrown:
 \texttt{ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'} \\
