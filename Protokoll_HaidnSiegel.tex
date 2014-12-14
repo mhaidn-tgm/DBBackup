@@ -143,8 +143,9 @@ system-level commands & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \beg
 mysqlhotcopy & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
 Automated Backup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
 Documentation & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}0.5\\ 0.5\end{tabular}    \\ \hline 
-postgres & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}5\\ 5\end{tabular}    \\ \hline 
-
+pg\_dump & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 2\end{tabular}    \\ \hline 
+pg\_restore & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\1\end{tabular}    \\ \hline 
+% 4 hours left!!!
 \hline \hline
 Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}12\\12\end{tabular}   \\ \hline 
 \textbf{Total Team} & & \textbf{21.5 hours}  \\ \hline 
@@ -164,11 +165,14 @@ mysqlbackup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular
 system-level commands & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 0\end{tabular}    \\ \hline 
 mysqlhotcopy & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1.5\\ 1.5\end{tabular}    \\ \hline 
 Automated Backup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1.5\\ 2\end{tabular}    \\ \hline 
-Documentation & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 2\end{tabular}    \\ \hline 
+Documentation Mysql & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 2\end{tabular}    \\ \hline 
+pg\_dump & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 2\end{tabular}    \\ \hline 
+pg\_restore & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}0.5\\ 0.5\end{tabular}    \\ \hline 
+Documentation Postgres & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
 
 \hline \hline
-Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}11\\10.5\end{tabular}   \\ \hline 
-\textbf{Total Team} & & \textbf{21.5 hours}  \\ \hline 
+Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}14.5\\14\end{tabular}   \\ \hline 
+\textbf{Total Team} & & \textbf{28.5 hours}  \\ \hline 
 \end{tabular}
 \end{table}
 \FloatBarrier
@@ -190,12 +194,6 @@ We were using the create scripts from the last VSDB homework. In this we had don
 	\end{center}
 \end{figure}
 \FloatBarrier
-\subsection{Hannah}
-OS: Windows 8.1 \\
-Database: Mysql Version 14.14, Distribution 5.5.40 \\
-VM on which the DB runs: Ubuntu 14.04 LTS , it's IP: 192.168.117.131
-\subsection{Martin}
-\todo{martin}
 \newpage
 \newpage
 \section{Backups general}
@@ -231,8 +229,6 @@ Logical backups :
 \\ \
 "A full backup includes all data managed by a MySQL server at a given point in time. An incremental backup consists of the changes made to the data during a given time span (from one point in time to another). MySQL has different ways to perform full backups, such as those described earlier in this section. Incremental backups are made possible by enabling the server's binary log, which the server uses to record data changes. \\
 Incremental recovery is recovery of changes made during a given time span. This is also called point-in-time recovery because it makes a server's state current up to a given time. Point-in-time recovery is based on the binary log and typically follows a full recovery from the backup files that restores the server to its state when the backup was made. Then the data changes written in the binary log files are applied as incremental recovery to redo data modifications and bring the server up to the desired point in time.", \cite{mysqlbackupandrectypesman}
-
-
 %\textbf{Komplettsicherung} 
 %Alle Daten jedes mal 
 % \textbf{Differenzsicherung}
@@ -261,7 +257,7 @@ A similar distinction between online and offline applies for recovery operations
 Mysql has an option called mysqldump. Mysql dump can connect to local or remote servers.\cite{mysqlbackupandrectypesman}
 \subsubsection{Performing a database dump}
 To do a backup from only one database, the following command needs to be executed: \\
-\texttt{ mysqldump -u root -p [database\_name] \textgreater ~dumpfilename.sql } \\
+\texttt{ mysqldump -u [user] -p [database\_name] \textgreater ~dumpfilename.sql } \\
 After typing in the password, a file will be available which, in this case is called \texttt{dumpfilename.sql}.\\ 
 The content of the dumpfile is the following:
 \begin{lstlisting}    
@@ -310,13 +306,13 @@ INSERT INTO `Person` VALUES
 ('Martin','Haidn','Managment','Gruene gasse','current'),...
 \end{lstlisting}    
 \textbf{Backup of only one table using mysqldump}\\
-\texttt{ mysqldump -u root -p [database\_name] [table\_name] \textgreater ~dumpfilename.sql } \\ \\
+\texttt{ mysqldump -u  [user] -p [database\_name] [table\_name] \textgreater ~dumpfilename.sql } \\ \\
 \textbf{Backup of more than one database using mysqldump}\\
-\texttt{ mysqldump -u root -p --databases [database\_name1] [database\_name2] \textgreater ~dumpfilename.sql } \\ 
+\texttt{ mysqldump -u  [user] -p --databases [database\_name1] [database\_name2] \textgreater ~dumpfilename.sql } \\ 
 \textbf{Backup of all databases using mysqldump}\\
-\texttt{ mysqldump -u root -p --all-databases \textgreater ~dumpfilename.sql } \\ \\
+\texttt{ mysqldump -u  [user] -p --all-databases \textgreater ~dumpfilename.sql } \\ \\
 \textbf{Backup of only the structure without any data}\\
-\texttt{mysqldump -u root -p [-d|--no-data] [database\_name] \textgreater ~dumpfilename.sql }
+\texttt{mysqldump -u  [user] -p [-d|--no-data] [database\_name] \textgreater ~dumpfilename.sql }
 \subsubsection{Drop statements}
 If drop-statements should be added, the following parameters can simply be added:
 \begin{table}[h]
@@ -331,6 +327,12 @@ The option \texttt{--add-drop-trigger} was supported in version 5.1, but it is n
 root@ubuntu:/var/lib/mysql# mysqldump -u root -p insy2 --add-drop-trigger > df1.sql
 mysqldump: unknown option '--add-drop-trigger' 
 \end{lstlisting}    
+Weirdly, even trough we didn't add the \texttt{--add-drop-table} command in the first place, the dump includes the 
+\texttt{DROP TABLE IF EXISTS} Command, as it can be seen in the first code snippet under this section:
+\begin{lstlisting}    
+DROP TABLE IF EXISTS `Abteilung`;
+\end{lstlisting}    
+
 \subsubsection{Performing a data restore}
 After having dropped the database, the following commad was restoring the data. this has worked out fine:
 To do a backup from only one database, the following command needs to be executed: \\
@@ -349,7 +351,7 @@ Mysql is only available for the mysql Enterprise Edition.
 \end{figure}\FloatBarrier
 \subsection{Restoring from another Database}
 Also, a database could be copied from another using these commands.
-We have tried this out an it worked.
+We have tried this out an it worked.\cite{so1}
 \begin{lstlisting}    
 MyISAM:
 CREATE TABLE db2.mytable LIKE db1.mytable;
@@ -362,7 +364,6 @@ INNODB:
 CREATE TABLE db2.mytable LIKE db1.mytable;
 INSERT INTO db2.mytable SELECT * FROM db1.mytable;
   \end{lstlisting}    
-\cite{so1}
 \subsection{Physical backup using File system commands}
 \label{sec:cpmysql}
 In Order to copy the files, the location must be found out. This can be done with the \texttt{select @@datadir} command within mysql.
@@ -450,9 +451,11 @@ Automised Backups with mysql are quite easy. This can be done using the tool aut
 The following commands have to be done: \\
 \texttt{sudo apt-get install automysqlbackup} \\
 \texttt{sudo automysqlbackup} \\ \\
-The main configuration file for automysqlbackup is located at \texttt{/etc/default/automysqlbackup}.
+The main configuration file for automysqlbackup is located at \texttt{/etc/default/automysqlbackup}. \\
+"If you only want to back up certain databases, you can specify them in the DBNAMES configuration variable. Conversely, if you want to backup everything except certain databases, you can use the DBEXCLUDE configuration variable to list what to exclude.",\cite{sceduleddbbck} \\
 The backups will be located at \texttt{/var/lib/automysqlbackup}. There are three folders: \texttt{daily, weekly, monthly}.
-The automised backup worked, in my daily folder, each day there is a new File.
+The automised backup worked, in my daily folder, each day there is a new File.\\
+"By default, the daily folder will contain all of the last seven days. The weekly folder will grow to contain the database as it was on Sunday each of the last fifty-two weeks. Similarly, monthly will contain the end of all each of the last twelve months.",\cite{sceduleddbbck}
 \begin{figure}[!h]
 	\begin{center}
 		\includegraphics[width=1.0\linewidth]{pictures/mysql_autobackup}
@@ -460,12 +463,27 @@ The automised backup worked, in my daily folder, each day there is a new File.
 		\label{content}
 	\end{center}
 \end{figure}
+\FloatBarrier
+\textbf{Using the backups}\\
+"The .gz extension means it's compressed. To restore a database, you'd first have to uncompress the dump:
+\texttt{gunzip filename.sql.gz}",\cite{uglywebpage}. The unzipped file will look exactly the same like an sql file which has been generated using mysqldump. It can then be restored.
 
-%\todo{Autobackup - needs to be tested:: and then documented.}
+
 %https://www.digitalocean.com/community/tutorials/how-to-backup-mysql-databases-on-an-ubuntu-vps
 %http://serverzeit.de/tutorials/backup/automysqlbackup
 %http://www.bjoerne.com/mysql-backups-mit-automysqlbackup-erstellen/
 %http://www.debianhelp.co.uk/mysqlscript.htm
+%http://www.farces.com/wikis/naked-server/mysql/automysqlbackup/
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=1.0\linewidth]{pictures/crontab}
+		\caption{Usage of the crontab file\cite{crontabref}}
+		\label{content}
+	\end{center}
+\end{figure}
+
+
+
 
 %\subsubsection{Uhrzeit als Trigger}
 
@@ -475,6 +493,155 @@ The automised backup worked, in my daily folder, each day there is a new File.
 
 %\todo{INKREMENTELLE BACKUPS MYSQL?????}
 \newpage
+\section{Postgres Backup}
+\subsection{Logical Backup into Files with pg\_dump}
+Postgres comes with an option called pg\_dump. 
+\subsubsection{Performing a database dump with pg\_dump \cite{pgdumpdoc}}
+To do a backup from only one database, the following command needs to be executed: \\
+\texttt{ pg\_dump -U [user] [database\_name] -f dumpfilename.sql } \\
+Then a file will be available which, in this case, is called \texttt{dumpfilename.sql}.\\ 
+The content of the dumpfile is the following:
+\begin{lstlisting}    
+--
+-- PostgreSQL database dump
+--
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+SET search_path = public, pg_catalog;
+--
+-- Name: action_type; Type: TYPE; Schema: public; Owner: hsiegel
+--
+
+CREATE TYPE action_type AS ENUM (
+    'insert',
+    'update',
+    'delete'
+);
+.....
+
+CREATE TABLE logged (
+    id integer NOT NULL,
+    action action_type,
+    tablename character varying(255) NOT NULL,
+    old_values character varying(255) NOT NULL,
+    new_values character varying(500),
+    date_done timestamp without time zone
+);
+
+.....
+\end{lstlisting}    
+Same as with Mysql, one create table command, there is a lot of other bulk. \\
+In the next example, the Inserts into a table can be seen, and here it actually is quite short.
+\begin{lstlisting}    
+COPY mitarbeiter (name, abteilung, sync) FROM stdin;
+Hannah Siegel	HR	current
+Nikolaus Schrack	Analysten	current
+Paul Adeyemi	Sportabteilung	current
+Wolfram Soyka	Finance	current
+Jakob Saxinger	Kueche	current
+Philip Schwarzkopf	Sales	current
+Elias Frantar	Kindergarten	current
+Gary Ye	Abteilung Google	current
+Aly Ahmed	Facility Management	current
+Martin Haidn	Managment	current
+Dominik Scholz	IT	current
+\end{lstlisting}    
+\textbf{Backup of all databases using pg\_dump}\\
+\texttt{ pg\_dumpall -U [user] -f dumpfilename.sql} \\ \\
+\textbf{Backup of only one table using mysqldump}\\
+\texttt{ pg\_dump -U [user] -f dumpfilename.sql -t mitarbeiter} 
+\subsubsection{Options}
+\textbf{--data-only}\\
+Dump only the data, not the schema (data definitions).
+\\ \\
+\textbf{--create}\\
+Adds the line:
+\begin{lstlisting}    
+CREATE DATABASE vsdb_03 WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
+\end{lstlisting}    
+\textbf{-F format}\\
+\textit{p plain }\\
+Output a plain-text SQL script file (the default).
+\\ \\
+\textit{c custom} \\
+Output a custom archive suitable for input into pg\_restore. This is the most flexible format in that it allows reordering of loading data as well as object definitions. This format is also compressed by default. \\
+The output is an .sql File but it is not readable:
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{pictures/content}
+		\caption{Content of the file}
+		\label{content}
+	\end{center}
+\end{figure} 
+\\ \\
+\textit{t tar} \\
+Output a tar archive suitable for input into pg\_restore. Using this archive format allows reordering and/or exclusion of database objects at the time the database is restored. It is also possible to limit which data is reloaded at restore time.
+\\ \\
+\textbf{--inserts}\\
+"Dump data as INSERT commands with explicit column names (INSERT INTO table (column, ...) VALUES ...). This will make restoration very slow; it is mainly useful for making dumps that can be loaded into non-PostgreSQL databases. Also, since this option generates a separate command for each row, an error in reloading a row causes only that row to be lost rather than the entire table contents." \cite{pgdumpdoc} \\
+This generates the following output:
+\begin{lstlisting}    
+INSERT INTO mitarbeiter VALUES ('Hannah Siegel', 'HR', 'current');
+INSERT INTO mitarbeiter VALUES ('Nikolaus Schrack', 'Analysten', 'current');
+[..]
+INSERT INTO mitarbeiter VALUES ('Aly Ahmed', 'Facility Management', 'current');
+INSERT INTO mitarbeiter VALUES ('Martin Haidn', 'Managment', 'current');
+INSERT INTO mitarbeiter VALUES ('Dominik Scholz', 'IT', 'current');
+\end{lstlisting}    
+\textbf{-t [table\_name]}\\
+This option dumps only one specific table.
+\subsubsection{Drop statements}
+If the option \texttt{--clean} was added to the \texttt{pg\_dump} command, the triggers, tables and so on will be dropped:
+\begin{lstlisting}    
+DROP TRIGGER update_veranstaltung_trigger ON public.veranstaltung;
+[..]
+ALTER TABLE ONLY public.veranstaltung DROP CONSTRAINT pk_veranstaltung;
+[..]
+DROP TABLE public.veranstaltung;
+[..]
+DROP SEQUENCE public.logged_id_seq;
+[..]
+DROP FUNCTION public.update_veranstaltung();
+[..]
+DROP TYPE public.sync_type;
+[..]
+DROP EXTENSION plpgsql;
+DROP SCHEMA public;
+\end{lstlisting}    
+\subsubsection{Performing a data restore}
+Restoring from the sql file using pg\_restore didnt work at first, this was the error message:
+\begin{lstlisting}    
+pg\_restore: [archiver] input file appears to be a text format dump. Please use psql.
+\end{lstlisting}    
+Then we tried it with the file which we had generated using the \texttt{-F custom} parameter from pg\_dump.
+There was no exception or anything, but somehow the import was not succesfull.
+\\
+\\
+Happily, the restore worked with the normal sql file. All that had to be done was importing in when we were logged in in the database using the \texttt{\i filename} command.
+
+%Physical backup
+
+\subsection{Backup of Triggers / Stored Routines}
+With the pg\_dump command, triggers and functions had been restored as well.
+%Online Backup
+%Remote Backups
+%Automised Backups
+\newpage
+
 \section{Problems}
 \subsection{Mysql connection didn't work out}
 When trying to connect to the mysql Database, the following error was thrown:
@@ -489,7 +656,7 @@ The following steps had to be done: \\
 \end{enumerate}
 \cite{mysqlProblem1}
 
-
+http://www.pgadmin.org/docs/1.8/pgagent-install.html
 \newpage
 \begin{thebibliography}{56}
 
@@ -522,7 +689,7 @@ The following steps had to be done: \\
 
 
  \bibitem{mysqlhotcopyman} 
-  \textbf{Mysql Manual 5.5}mysqlhotcopy — A Database Backup Program\\
+  \textbf{Mysql Manual 5.5} mysqlhotcopy — A Database Backup Program\\
   \textit{http://dev.mysql.com/doc/refman/5.5/en/mysqlhotcopy.html}
   \newline last used: 2014.12.08, 14:16
 
@@ -536,6 +703,31 @@ The following steps had to be done: \\
   \textit{https://www.digitalocean.com/community/tutorials/how-to-backup-mysql-databases-on-an-ubuntu-vps}
   \newline last used: 2014.12.08, 15:30
   
+   \bibitem{sceduleddbbck} 
+  \textbf{Scheduled DB backup with automysqlbackup}, January 5, 2013 \\
+  \textit{https://pelanne.com/blog/scheduled-db-backup-automysqlbackup/}
+  \newline last used: 2014.12.10, 09:33
   
+   \bibitem{uglywebpage} 
+  \textbf{Creating MySQL Backups With AutoMySQLBackup On Ubuntu 9.10}\\ Falko Timme, January 27, 2010 \\
+  \textit{http://www.howtoforge.com/creating-mysql-backups-with-automysqlbackup-on-ubuntu-9.10}
+  \newline last used: 2014.12.10, 09:35
+  
+  
+   \bibitem{crontabref} 
+  \textbf{Crontab – Quick Reference}  Hemant Sharma \\
+  \textit{http://www.adminschoice.com/crontab-quick-reference}
+  \newline last used: 2014.12.14, 15:59
+  
+    \bibitem{pgdumpdoc} 
+  \textbf{Postgres Documentation} SQL Dump\\
+  \textit{http://www.postgresql.org/docs/9.1/static/backup-dump.html}
+  \newline last used: 2014.12.14, 19:32
+    
+    \bibitem{pgdumpdoc} 
+  \textbf{Postgres Documentation} pg\_restore\\
+  \textit{  http://www.postgresql.org/docs/9.1/static/app-pgrestore.html}
+  \newline last used: 2014.12.14, 20:03
+
 \end{thebibliography}
 \end{document}
