@@ -72,12 +72,7 @@ right  = 3cm]{geometry}
 \rule{14cm}{1mm}
 \noindent 
 
-\vspace{2cm}
-
- \LARGE NOT FINISEHD YET - Postgres is missing
-  \vspace{5cm}
-
-%\vspace{7cm}
+\vspace{7cm}
 \small
 \begin{center}
   \begin{tabular}{ | p{0.1\textwidth} | p{0.2\textwidth} | p{0.2\textwidth} | p{0.1\textwidth} | p{0.2\textwidth} |}
@@ -86,7 +81,9 @@ right  = 3cm]{geometry}
     \hline 
     \hline
 0.1 & Siegel & 2014.11.28 & Draft &    \\ 
-0.2 & Siegel & 2014.12.09 & Draft &  Mysql finished  \\ 
+0.2 & Haidn & 2014.12.09 & Draft &  Mysql finished  \\ 
+0.3 & Siegel & 2014.12.14 & Draft &  Postgres finished  \\ 
+1.1 & Haidn & 2014.12.15 & Finished &  QA done  \\ 
 
     \hline
   \end{tabular}
@@ -108,25 +105,6 @@ right  = 3cm]{geometry}
 \ifoot{© Haidn, Siegel}
 \ofoot{\pagemark}
 \tableofcontents
-\section{Task description (German)}
-Untersuchen Sie die Backup-Tools von MySQL (mysqldump, mysqlhotcopy, ibbackup) und PostgreSQL (pg\_dump) und lösen Sie folgende Aufgaben:
-\\ \\
-Finden und dokumentieren Sie (für ihr System OS/DBMS) die etsprechenden Optionen der Tools für folgende Anforderungen: \\
-Speichern einer/mehrerer/aller Datenbanken des Systems in einer Datei mit/ohne Datenbankstruktur, Trigger und Stored-Routines 
-Verwendung der "IF EXISTS"- und "DROP"-Klausel unter MySQL bzw. PostgreSQL \\
-Logisches vs. Physisches Backup: Was sind die Vor- bzw. Nachteile der beiden Arten und worauf muss man achten
-Online-Backup: Wie kann man einen Dump der DB während des Betriebs ausführen (Locking, ...)
-Wie können Sie auf gemieteten DB-Servern (remote) ebenfalls Backups ausführen? Geben Sie zwei Möglichkeiten an.
-\\ \\
-Wie könnte man die Backupvarianten aus Punkt 1 automatisieren (Uhrzeit als Trigger)? Geben Sie entsprechend für ihr Betriebssystem (Windows, Linux, Mac, ...) Möglichkeiten an.
-Verwendung eines Zeitstempels zur Speicherung der Dumps (in den Filenamen inkludiert; z.B. DBNAME\_20100413\_0952.sql)
-\\ \\
-Abgaberichtlinien:
- \\ \\
-PDF-Dokument, ca. 15 Seiten, formatiert und strukturiert ähnlich wie das Technik-/Machbarkeits-Kapitel der Diplomarbeit (Zitate, Quellen, Fußnoten, Tabellen, Grafiken, Screenshots, Inhaltsverzeichnis, ...)
-Bitte in Zweier-Teams arbeiten, alle im Team mitarbeitenden Autoren müssen aber in der Lage sein, jedes Thema/Detail auch selbst zu präsentieren. \\
-Arbeitsaufwand ca. 10 Stunden pro Team.  \\
-Präsentation am 9.12.2014
 
 \section{Working time}
 \subsection{Estimated}
@@ -145,7 +123,7 @@ Automated Backup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{ta
 Documentation & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}0.5\\ 0.5\end{tabular}    \\ \hline 
 pg\_dump & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 2\end{tabular}    \\ \hline 
 pg\_restore & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\1\end{tabular}    \\ \hline 
-% 4 hours left!!!
+automated postgres & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\2\end{tabular}    \\ \hline 
 \hline \hline
 Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}12\\12\end{tabular}   \\ \hline 
 \textbf{Total Team} & & \textbf{21.5 hours}  \\ \hline 
@@ -169,13 +147,16 @@ Documentation Mysql & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin
 pg\_dump & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\ 2\end{tabular}    \\ \hline 
 pg\_restore & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}0.5\\ 0.5\end{tabular}    \\ \hline 
 Documentation Postgres & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\ 1\end{tabular}    \\ \hline 
+Automated Postgres Backup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1.5\\ 1.5\end{tabular}    \\ \hline 
 
 \hline \hline
-Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}14.5\\14\end{tabular}   \\ \hline 
-\textbf{Total Team} & & \textbf{28.5 hours}  \\ \hline 
+Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}16\\15.5\end{tabular}   \\ \hline 
+\textbf{Total Team} & & \textbf{31.5 hours}  \\ \hline 
 \end{tabular}
 \end{table}
 \FloatBarrier
+Therefore it took us a little bit longer (about 10 hours more).
+\newpage
 \section{Working situation}
 \subsection{Database models}
 We were using the create scripts from the last VSDB homework. In this we had done two similar create scripts using both mysql and postgres. \\ The database contains triggers and inserts for each table.\\ The ER can be seen in figures \ref{mysqler} and \ref{pger}.
@@ -194,17 +175,12 @@ We were using the create scripts from the last VSDB homework. In this we had don
 	\end{center}
 \end{figure}
 \FloatBarrier
-<<<<<<< HEAD
-=======
 \subsection{Hannah}
-OS: Windows 8.1 \\
-Database: Mysql Version 14.14, Distribution 5.5.40 \\
-VM on which the DB runs: Ubuntu 14.04 LTS , it's IP: 192.168.117.131
+Databases: Mysql Version 14.14, Distribution 5.5.40, PostgreSQL 9.3.5\\
+DB-Server Environment (VM) :  Ubuntu 14.04 LTS , it's IP: 192.168.117.131
 \subsection{Martin}
-OS: Linux 3.16.2-1-MANJARO\\
 Database: Mysql Version 14.14 Distribution 5.5.31\\
-DB-Server Environment: Linux Debian 3.10.11-1
->>>>>>> origin/master
+DB-Server Environment (VM) : Linux Debian 3.10.11-1
 \newpage
 \newpage
 \section{Backups general}
@@ -351,12 +327,12 @@ To do a backup from only one database, the following command needs to be execute
 With this type of recovery, even the triggers have been imported.
 \newpage
 \subsection{Physical backup with mysqlbackup}
-Mysql is only available for the mysql Enterprise Edition.
-\todo{more information}
+A physical backup tool is available in the mysql Enterprise Edition. These information could be found under \cite{mysqlenterprisebackup}.
+Of course, it might not be the most trustful source, because mysql will surely try to promote it's product, but still it might be about that much faster:
 \begin{figure}[!h]
 	\begin{center}
 		\includegraphics[width=0.7\linewidth]{pictures/mysqlentbackup}
-		\caption{Difference between mysqlbackup and mysqldump \cite{mysqlenterprisebackup}}
+		\caption{Difference between mysqlbackup and mysqldump }
 		\label{differenceent}
 	\end{center}
 \end{figure}\FloatBarrier
@@ -456,7 +432,7 @@ You can specify the server name as an option to mysqldump:
 \texttt{mysqldump --host [server\_name] [database\_name] \textgreater ~dumpfilename.sql}
 \subsubsection{Using ftp to perform remote backups}
 As described in section \ref{sec:cpmysql}, the files can simply be copied, and this process of copying can also be performed using ftp.
-\subsection{Automised Backups}
+\subsection{Automated Backups}
 An important way of performing backups is that they can also be automatised. This has the advantage, that the administrator doesn't has to think about doing a backup and therefore is not able to forget it, and also backups can then be scheduled at times, when the database server might not be very busy, so the backup is faster and the client do not notice that a backup task has just been performed.  \\
 Automised Backups with mysql are quite easy. This can be done using the tool automysqlbackup. \\
 The following commands have to be done: \\
@@ -475,34 +451,26 @@ The automised backup worked, in my daily folder, each day there is a new File.\\
 	\end{center}
 \end{figure}
 \FloatBarrier
-\textbf{Using the backups}\\
-"The .gz extension means it's compressed. To restore a database, you'd first have to uncompress the dump:
-\texttt{gunzip filename.sql.gz}",\cite{uglywebpage}. The unzipped file will look exactly the same like an sql file which has been generated using mysqldump. It can then be restored.
-
-
-%https://www.digitalocean.com/community/tutorials/how-to-backup-mysql-databases-on-an-ubuntu-vps
-%http://serverzeit.de/tutorials/backup/automysqlbackup
-%http://www.bjoerne.com/mysql-backups-mit-automysqlbackup-erstellen/
-%http://www.debianhelp.co.uk/mysqlscript.htm
-%http://www.farces.com/wikis/naked-server/mysql/automysqlbackup/
+\subsubsection{Backup at a certain time}
+Because we couldn't find the possibility to set a time when the backup should be done with the automysqlbackup option, we looked further. \\
+There is the possibility to use the cron-deamon. This is a program which can execute shell scripts automatically.
+All that had to be done, was adding a line into the cron-table. \\
+This can be done using the \texttt{crontab -e} command. \\
+In figure \ref{fig:crontab} the crontab syntax is described. We added the following line:
+\begin{lstlisting}
+15 20 * * *   /usr/sbin/automysqlbackup
+\end{lstlisting}
 \begin{figure}[!h]
 	\begin{center}
 		\includegraphics[width=1.0\linewidth]{pictures/crontab}
 		\caption{Usage of the crontab file\cite{crontabref}}
-		\label{content}
+		\label{fig:crontab}
 	\end{center}
 \end{figure}
-
-
-
-
-%\subsubsection{Uhrzeit als Trigger}
-
-%\subsubsection{Verwendung eines Zeitstempels zur Speicherung des Dumps}
-
-% Bestes mysql backup tool.
-
-%\todo{INKREMENTELLE BACKUPS MYSQL?????}
+\todo{ausfuehrlicher}
+\subsubsection{Using the backups}
+"The .gz extension means it's compressed. To restore a database, you'd first have to uncompress the dump:
+\texttt{gunzip filename.sql.gz}",\cite{uglywebpage}. The unzipped file will look exactly the same like an sql file which has been generated using mysqldump. It can then be restored.
 \newpage
 \section{Postgres Backup}
 \subsection{Logical Backup into Files with pg\_dump}
@@ -643,18 +611,51 @@ There was no exception or anything, but somehow the import was not succesfull.
 \\
 \\
 Happily, the restore worked with the normal sql file. All that had to be done was importing in when we were logged in in the database using the \texttt{\i filename} command.
-
-%Physical backup
-
+\subsection{Physical backups}
+In the Postgres Manual the following command could be found: \\
+\texttt{tar -cf backup.tar /usr/local/pgsql/data} \\
+But in out case we were not able to find this path. It just didn't exist.
+\\ \\
+"The database server must be shut down in order to get a usable backup. [..] Restoring individual tables or databases from their respective files or directories will not work because the information contained in these files is not usable without the commit log files, pg\_clog/*, which contain the commit status of all transactions.",\cite{phyback} \\
+"An alternative file-system backup approach is to make a "consistent snapshot" of the data directory, if the file system supports that functionality (and you are willing to trust that it is implemented correctly). The typical procedure is to make a "frozen snapshot" of the volume containing the database, then copy the whole data directory (not just parts, see above) from the snapshot to a backup device, then release the frozen snapshot. This will work even while the database server is running. However, a backup created in this way saves the database files in a state as if the database server was not properly shut down; therefore, when you start the database server on the backed-up data, it will think the previous server instance crashed and will replay the WAL log. This is not a problem; just be aware of it (and be sure to include the WAL files in your backup). You can perform a CHECKPOINT before taking the snapshot to reduce recovery time.",\cite{phyback}
+\\ \\
+Other references were leading to the PGDATA folder. This folder is located at \texttt{/var/lib/postgresql/9.3/main} in our case. Still, we were not able to locate the relevant files. Pg\_dump therefore is still the better backup method in our opinion.
 \subsection{Backup of Triggers / Stored Routines}
 With the pg\_dump command, triggers and functions had been restored as well.
-%Online Backup
-%Remote Backups
-%Automised Backups
+\subsection{Remote Backups}
+The pg\_dump method has a parameter -h in which an host can be specified. Therefore it enables a remote host backup.
+\subsection{Online Backups}
+The pg\_dump method enables online backups.
+With an physical method, the database server must be shut down in order to get a usable backup.
+\subsection{Automated Backups}
+First, we downloaded an .sh file from \cite{autppg}. It basically is the same file as the automysqlbackup, but customised for PostgreSQL. \\
+We put the file into the \texttt{/home/hsiegel/Documents/sync\_het\_db} folder and we added the following line to our crontab (using the \texttt{crontab -e} command, just as before). 
+\begin{lstlisting}    
+40 15 * * * /home/hsiegel/Documents/sync_het_db/autopgbackup.sh
+\end{lstlisting}    
+In order to get this working, we had to change the Database names in the script from all to the ones we wanted to backup, because otherwise it wouldn't work. As it can be seen in figure \ref{fig:b1}, the backup happened at exactly 15:40. The database vsdb\_03 has been successfully backuped (figure \ref{fig:b2}).  
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{pictures/pgbackupaut}
+		\caption{Time of the backup}
+		\label{fig:b1}
+	\end{center}
+\end{figure} 
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{pictures/pgbackupaut2}
+		\caption{Content of the backup folder}
+		\label{fig:b2}
+	\end{center}
+\end{figure} 
 \newpage
+\section{Summary}
+After having tried out all the possible backup methods, we finally can conclude, that the mysql\_dump and the pg\_dump were the best tools. \\ 
+This was because the logical files were better readable, and it was easier doing the backup. The two tools provide the user with a wide range of possibilities. \\
+Automated backups should be done using the cron-deamon. We liked this option, because it was really easy and it also provides a lot of functionality. Besides this, the crontab was a centralized place in which we had both the mysql and the postgres backup and therefore it would be easy to change both of them at the same time.
 
 \section{Problems}
-\subsection{Mysql connection didn't work out}
+\textbf{Mysql connection didn't work out} \\
 When trying to connect to the mysql Database, the following error was thrown:
 \texttt{ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'} \\
 The following steps had to be done: \\
@@ -714,6 +715,8 @@ http://www.pgadmin.org/docs/1.8/pgagent-install.html
   \textit{https://www.digitalocean.com/community/tutorials/how-to-backup-mysql-databases-on-an-ubuntu-vps}
   \newline last used: 2014.12.08, 15:30
   
+
+
    \bibitem{sceduleddbbck} 
   \textbf{Scheduled DB backup with automysqlbackup}, January 5, 2013 \\
   \textit{https://pelanne.com/blog/scheduled-db-backup-automysqlbackup/}
@@ -735,10 +738,32 @@ http://www.pgadmin.org/docs/1.8/pgagent-install.html
   \textit{http://www.postgresql.org/docs/9.1/static/backup-dump.html}
   \newline last used: 2014.12.14, 19:32
     
-    \bibitem{pgdumpdoc} 
+    \bibitem{pgdoc2} 
   \textbf{Postgres Documentation} pg\_restore\\
   \textit{  http://www.postgresql.org/docs/9.1/static/app-pgrestore.html}
   \newline last used: 2014.12.14, 20:03
 
+    \bibitem{automysql} 
+  \textbf{bjoerne.com} 4. September 2013\\
+  \textit{http://www.bjoerne.com/mysql-backups-mit-automysqlbackup-erstellen/}
+  \newline last used: 2014.12.15, 15:16
+
+    \bibitem{autppg} 
+  \textbf{Autobackup Postgres Script}Aaron Axelsen, 2005 4. September 2013\\
+  \textit{http://autopgsqlbackup.frozenpc.net}
+  \newline last used: 2014.12.15, 15:17
+  
+  \bibitem{phyback} 
+  \textbf{PostgreSQL 9.3 Documentation} Chapter 24. Backup and Restore	\\
+  \textit{http://www.postgresql.org/docs/9.3/static/backup-file.html}
+  \newline last used: 2014.12.15, 16:39
+	
+	
+	
 \end{thebibliography}
 \end{document}
+%\todo{INKREMENTELLE BACKUPS MYSQL?????}
+%Online Backup Postgres
+%Physical backup Postgres
+
+% TODO mysql 20:15 testen!!!!!

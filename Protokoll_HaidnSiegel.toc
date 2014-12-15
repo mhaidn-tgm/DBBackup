@@ -1,42 +1,47 @@
 \select@language {english}
-\contentsline {section}{\numberline {1}Task description (German)}{2}
-\contentsline {section}{\numberline {2}Working time}{2}
-\contentsline {subsection}{\numberline {2.1}Estimated}{2}
-\contentsline {subsection}{\numberline {2.2}Final}{3}
-\contentsline {section}{\numberline {3}Working situation}{4}
-\contentsline {subsection}{\numberline {3.1}Database models}{4}
-\contentsline {subsection}{\numberline {3.2}Hannah}{5}
-\contentsline {subsection}{\numberline {3.3}Martin}{5}
-\contentsline {section}{\numberline {4}Backups general}{6}
-\contentsline {subsection}{\numberline {4.1}Why should backups be done?}{6}
-\contentsline {subsection}{\numberline {4.2}Logical versus physical backups}{6}
-\contentsline {subsection}{\numberline {4.3}Full versus incremental backups}{7}
-\contentsline {subsubsection}{\numberline {4.3.1}Online versus Offline backups}{7}
-\contentsline {section}{\numberline {5}Mysql Backup}{8}
-\contentsline {subsection}{\numberline {5.1}Logical Backup into Files with mysqldump}{8}
-\contentsline {subsubsection}{\numberline {5.1.1}Performing a database dump}{8}
-\contentsline {subsubsection}{\numberline {5.1.2}Drop statements}{9}
-\contentsline {subsubsection}{\numberline {5.1.3}Performing a data restore}{9}
-\contentsline {subsection}{\numberline {5.2}Physical backup with mysqlbackup}{10}
-\contentsline {subsection}{\numberline {5.3}Restoring from another Database}{10}
-\contentsline {subsection}{\numberline {5.4}Physical backup using File system commands}{11}
-\contentsline {subsubsection}{\numberline {5.4.1}MyISAM}{11}
-\contentsline {subsubsection}{\numberline {5.4.2}InnoDB}{11}
-\contentsline {subsection}{\numberline {5.5}mysqlhotcopy}{12}
-\contentsline {subsubsection}{\numberline {5.5.1}Copying the files}{12}
-\contentsline {subsubsection}{\numberline {5.5.2}Restoring}{12}
-\contentsline {subsection}{\numberline {5.6}Backup of Triggers / Stored Routines}{12}
-\contentsline {subsection}{\numberline {5.7}Online Backup}{13}
-\contentsline {subsection}{\numberline {5.8}Remote Backups}{13}
-\contentsline {subsubsection}{\numberline {5.8.1}Using mysqldump to perform remote backups}{13}
-\contentsline {subsubsection}{\numberline {5.8.2}Using ftp to perform remote backups}{13}
-\contentsline {subsection}{\numberline {5.9}Automised Backups}{13}
-\contentsline {section}{\numberline {6}Postgres Backup}{14}
-\contentsline {subsection}{\numberline {6.1}Logical Backup into Files with pg\_dump}{14}
-\contentsline {subsubsection}{\numberline {6.1.1}Performing a database dump with pg\_dump \cite {pgdumpdoc}}{14}
-\contentsline {subsubsection}{\numberline {6.1.2}Options}{15}
-\contentsline {subsubsection}{\numberline {6.1.3}Drop statements}{16}
-\contentsline {subsubsection}{\numberline {6.1.4}Performing a data restore}{17}
-\contentsline {subsection}{\numberline {6.2}Backup of Triggers / Stored Routines}{17}
+\contentsline {section}{\numberline {1}Working time}{2}
+\contentsline {subsection}{\numberline {1.1}Estimated}{2}
+\contentsline {subsection}{\numberline {1.2}Final}{3}
+\contentsline {section}{\numberline {2}Working situation}{4}
+\contentsline {subsection}{\numberline {2.1}Database models}{4}
+\contentsline {subsection}{\numberline {2.2}Hannah}{4}
+\contentsline {subsection}{\numberline {2.3}Martin}{4}
+\contentsline {section}{\numberline {3}Backups general}{5}
+\contentsline {subsection}{\numberline {3.1}Why should backups be done?}{5}
+\contentsline {subsection}{\numberline {3.2}Logical versus physical backups}{5}
+\contentsline {subsection}{\numberline {3.3}Full versus incremental backups}{6}
+\contentsline {subsubsection}{\numberline {3.3.1}Online versus Offline backups}{6}
+\contentsline {section}{\numberline {4}Mysql Backup}{7}
+\contentsline {subsection}{\numberline {4.1}Logical Backup into Files with mysqldump}{7}
+\contentsline {subsubsection}{\numberline {4.1.1}Performing a database dump}{7}
+\contentsline {subsubsection}{\numberline {4.1.2}Drop statements}{8}
+\contentsline {subsubsection}{\numberline {4.1.3}Performing a data restore}{8}
+\contentsline {subsection}{\numberline {4.2}Physical backup with mysqlbackup}{9}
+\contentsline {subsection}{\numberline {4.3}Restoring from another Database}{9}
+\contentsline {subsection}{\numberline {4.4}Physical backup using File system commands}{10}
+\contentsline {subsubsection}{\numberline {4.4.1}MyISAM}{10}
+\contentsline {subsubsection}{\numberline {4.4.2}InnoDB}{11}
+\contentsline {subsection}{\numberline {4.5}mysqlhotcopy}{11}
+\contentsline {subsubsection}{\numberline {4.5.1}Copying the files}{11}
+\contentsline {subsubsection}{\numberline {4.5.2}Restoring}{11}
+\contentsline {subsection}{\numberline {4.6}Backup of Triggers / Stored Routines}{12}
+\contentsline {subsection}{\numberline {4.7}Online Backup}{12}
+\contentsline {subsection}{\numberline {4.8}Remote Backups}{12}
+\contentsline {subsubsection}{\numberline {4.8.1}Using mysqldump to perform remote backups}{12}
+\contentsline {subsubsection}{\numberline {4.8.2}Using ftp to perform remote backups}{12}
+\contentsline {subsection}{\numberline {4.9}Automated Backups}{12}
+\contentsline {subsubsection}{\numberline {4.9.1}Backup at a certain time}{13}
+\contentsline {subsubsection}{\numberline {4.9.2}Using the backups}{13}
+\contentsline {section}{\numberline {5}Postgres Backup}{14}
+\contentsline {subsection}{\numberline {5.1}Logical Backup into Files with pg\_dump}{14}
+\contentsline {subsubsection}{\numberline {5.1.1}Performing a database dump with pg\_dump \cite {pgdumpdoc}}{14}
+\contentsline {subsubsection}{\numberline {5.1.2}Options}{15}
+\contentsline {subsubsection}{\numberline {5.1.3}Drop statements}{16}
+\contentsline {subsubsection}{\numberline {5.1.4}Performing a data restore}{16}
+\contentsline {subsection}{\numberline {5.2}Physical backups}{17}
+\contentsline {subsection}{\numberline {5.3}Backup of Triggers / Stored Routines}{17}
+\contentsline {subsection}{\numberline {5.4}Remote Backups}{17}
+\contentsline {subsection}{\numberline {5.5}Online Backups}{17}
+\contentsline {subsection}{\numberline {5.6}Automated Backups}{17}
+\contentsline {section}{\numberline {6}Summary}{18}
 \contentsline {section}{\numberline {7}Problems}{18}
-\contentsline {subsection}{\numberline {7.1}Mysql connection didn't work out}{18}
