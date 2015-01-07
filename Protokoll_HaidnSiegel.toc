@@ -6,11 +6,11 @@
 \contentsline {subsection}{\numberline {2.1}Database models}{4}
 \contentsline {subsection}{\numberline {2.2}Hannah}{4}
 \contentsline {subsection}{\numberline {2.3}Martin}{4}
-\contentsline {section}{\numberline {3}Backups general}{5}
+\contentsline {section}{\numberline {3}Backups}{5}
 \contentsline {subsection}{\numberline {3.1}Why should backups be done?}{5}
 \contentsline {subsection}{\numberline {3.2}Logical versus physical backups}{5}
 \contentsline {subsection}{\numberline {3.3}Full versus incremental backups}{6}
-\contentsline {subsubsection}{\numberline {3.3.1}Online versus Offline backups}{6}
+\contentsline {subsection}{\numberline {3.4}Online versus Offline backups}{6}
 \contentsline {section}{\numberline {4}Mysql Backup}{7}
 \contentsline {subsection}{\numberline {4.1}Logical Backup into Files with mysqldump}{7}
 \contentsline {subsubsection}{\numberline {4.1.1}Performing a database dump}{7}
@@ -35,7 +35,7 @@
 \contentsline {section}{\numberline {5}Postgres Backup}{14}
 \contentsline {subsection}{\numberline {5.1}Logical Backup into Files with pg\_dump}{14}
 \contentsline {subsubsection}{\numberline {5.1.1}Performing a database dump with pg\_dump \cite {pgdumpdoc}}{14}
-\contentsline {subsubsection}{\numberline {5.1.2}Options}{15}
+\contentsline {subsubsection}{\numberline {5.1.2}Pg\_dump's Options}{15}
 \contentsline {subsubsection}{\numberline {5.1.3}Drop statements}{16}
 \contentsline {subsubsection}{\numberline {5.1.4}Performing a data restore}{16}
 \contentsline {subsection}{\numberline {5.2}Physical backups}{17}
@@ -44,4 +44,3 @@
 \contentsline {subsection}{\numberline {5.5}Online Backups}{17}
 \contentsline {subsection}{\numberline {5.6}Automated Backups}{17}
 \contentsline {section}{\numberline {6}Summary}{18}
-\contentsline {section}{\numberline {7}Problems}{18}

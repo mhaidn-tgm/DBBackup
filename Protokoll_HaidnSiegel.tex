@@ -125,8 +125,8 @@ pg\_dump & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c
 pg\_restore & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1\\1\end{tabular}    \\ \hline 
 automated postgres & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}2\\2\end{tabular}    \\ \hline 
 \hline \hline
-Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}12\\12\end{tabular}   \\ \hline 
-\textbf{Total Team} & & \textbf{21.5 hours}  \\ \hline 
+Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}13\\12\end{tabular}   \\ \hline 
+\textbf{Total Team} & & \textbf{25 hours}  \\ \hline 
 \end{tabular}
 \end{table}
 \newpage
@@ -150,8 +150,8 @@ Documentation Postgres & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \be
 Automated Postgres Backup & \begin{tabular}[c]{c} Haidn \\Siegel\end{tabular} & \begin{tabular}[c]{c}1.5\\ 1.5\end{tabular}    \\ \hline 
 
 \hline \hline
-Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}16\\15.5\end{tabular}   \\ \hline 
-\textbf{Total Team} & & \textbf{31.5 hours}  \\ \hline 
+Total & \begin{tabular}[c]{c}Haidn\\ Siegel\end{tabular} & \begin{tabular}[c]{c}16\\16.5\end{tabular}   \\ \hline 
+\textbf{Total Team} & & \textbf{32.5 hours}  \\ \hline 
 \end{tabular}
 \end{table}
 \FloatBarrier
@@ -183,20 +183,20 @@ Database: Mysql Version 14.14 Distribution 5.5.31\\
 DB-Server Environment (VM) : Linux Debian 3.10.11-1
 \newpage
 \newpage
-\section{Backups general}
+\section{Backups}
 \subsection{Why should backups be done?}
-After a drop-out, a recovery must me done. \\
+After a drop-out, a recovery must be done. \\
 To avoid a loss of data, a backup must be done before an drop-out occurs and it always should be current. \\ \\
 Backups are not only needed for recovery purposes, but also for archival storage purposes.
 \subsection{Logical versus physical backups}
 Logical backups save information represented as logical database structure (e.g. \texttt{Create Database}, \texttt{Create Table}  statements) and content (e.g \texttt{Insert} statements). Physical backups consist of raw copies of the directories and files that store database contents. \\ \\
 Logical backups :
 \begin{enumerate}
-\item Backup is done by querying the MySQL server
+\item Backup is done by querying the [MySQL] server
 \item Slower than physical methods
 \item Output is larger than physical methods
 \item The Backup and the Restore can be done either for all databases (server level), only for one database (database level) or only for specific tables (table level)
-\item Doesent include log or config files
+\item Doesn't include log or config files
 \item Backups are mostly done with the database still running
 \item Can be easily imported
 \item Backups stored in logical format are machine independent!
@@ -209,7 +209,6 @@ Logical backups :
 \item Can include log or config files
 \item Backups stored in logical format are machine dependent!
 \item Backups are seldom done with the database running, and if then the database files must be locked.
-\item Can be easily imported
 \end{enumerate} \cite{mysqlbackupandrectypesman}
 \subsection{Full versus incremental backups}
 "Some file system implementations enable “snapshots” to be taken. These provide logical copies of the file system at a given point in time, without requiring a physical copy of the entire file system. [..] MySQL itself does not provide the capability for taking file system snapshots. It is available through third-party solutions such as Veritas, LVM, or ZFS.", \cite{mysqlbackupandrectypesman}
@@ -223,7 +222,7 @@ Incremental recovery is recovery of changes made during a given time span. This 
 %\textbf{Inkrementelle Sicherung} 
 %- Alles und alle Aenderungen
 %(Aenderungen 1, 2, 3, … werden abgespeichert und muessen in der richtigen Reihenfolge eingespeichert werden)
-\subsubsection{Online versus Offline backups}
+\subsection{Online versus Offline backups}
 Online backups, also called hot backups, take place while the server is running so that the database can still be used.\\
 Offline backups, also called cold backups, take place while the server is not running and therefore the database is not availiable. \\ \\
 Online backups :
@@ -282,7 +281,7 @@ CREATE TABLE `Abteilung` (
 \end{lstlisting}    
 Even trough that in this case there is only one create table command, there is a lot of bulk. \\
 In the next example, the Inserts into a table can be seen, and here it actually is not too much bulk.
-Still, whenever saving a database dump like this, the file will be quite big, which might be a big disadvantage! 
+Still, whenever saving a database dump like this, the file will be quite big, which might be a disadvantage! 
 \begin{lstlisting}    
 INSERT INTO `Person` VALUES 
 ('Aly','Ahmed','Facility Management','Doppelte gasse','current'),
@@ -309,6 +308,7 @@ If drop-statements should be added, the following parameters can simply be added
 --add-drop-table    & Adds a DROP TABLE statement before each CREATE TABLE statement       \\
 \end{tabular}
 \end{table} \cite{mysqldumpman}
+\FloatBarrier
 The option \texttt{--add-drop-trigger} was supported in version 5.1, but it is not availiable anymore in 5.5:  
 \begin{lstlisting}    
 root@ubuntu:/var/lib/mysql# mysqldump -u root -p insy2 --add-drop-trigger > df1.sql
@@ -353,7 +353,7 @@ INSERT INTO db2.mytable SELECT * FROM db1.mytable;
   \end{lstlisting}    
 \subsection{Physical backup using File system commands}
 \label{sec:cpmysql}
-In Order to copy the files, the location must be found out. This can be done with the \texttt{select @@datadir} command within mysql.
+In order to copy the files, the location must be found out. This can be done with the \texttt{select @@datadir} command within mysql.
 \begin{figure}[!h]
 	\begin{center}
 		\includegraphics[width=0.4\linewidth]{pictures/datadir_mysql}
@@ -386,7 +386,7 @@ When simply coping these files, dropping the table and coping them back, \\ and 
 \begin{lstlisting}
  ERROR 1017 (HY000): Can't find file: './insy1/Logged.frm' (errno: 13)
 \end{lstlisting}
-When searching for a solution, there are some, but mostly it says that it is really better backing mysql databases up with \texttt{mysqlhotcopy}.
+When searching for a solution in the web, mostly it says that it is really better backing mysql databases up with \texttt{mysqlhotcopy}.
 \subsubsection{InnoDB}
 On the other hand, doing a backup when coping files, is "risky (near suicidal) with InnoDB.",\cite{so1}
 Therefore, whenever using InnoDB, a backup should be done with \texttt{mysqldump}.
@@ -445,7 +445,7 @@ The automised backup worked, in my daily folder, each day there is a new File.\\
 "By default, the daily folder will contain all of the last seven days. The weekly folder will grow to contain the database as it was on Sunday each of the last fifty-two weeks. Similarly, monthly will contain the end of all each of the last twelve months.",\cite{sceduleddbbck}
 \begin{figure}[!h]
 	\begin{center}
-		\includegraphics[width=1.0\linewidth]{pictures/mysql_autobackup}
+		\includegraphics[width=0.5\linewidth]{pictures/mysql_autobackup}
 		\caption{Content of the \texttt{/var/lib/automysqlbackup} folder with two automised backups}
 		\label{content}
 	\end{center}
@@ -523,7 +523,7 @@ CREATE TABLE logged (
 
 .....
 \end{lstlisting}    
-Same as with Mysql, one create table command, there is a lot of other bulk. \\
+Same as with Mysql, one create table command is producing a lot of lines. \\
 In the next example, the Inserts into a table can be seen, and here it actually is quite short.
 \begin{lstlisting}    
 COPY mitarbeiter (name, abteilung, sync) FROM stdin;
@@ -531,19 +531,19 @@ Hannah Siegel	HR	current
 Nikolaus Schrack	Analysten	current
 Paul Adeyemi	Sportabteilung	current
 Wolfram Soyka	Finance	current
-Jakob Saxinger	Kueche	current
+Jakob Saxinger	Sales	current
 Philip Schwarzkopf	Sales	current
-Elias Frantar	Kindergarten	current
-Gary Ye	Abteilung Google	current
+Elias Frantar	IT	current
+Gary Ye	IT	current
 Aly Ahmed	Facility Management	current
 Martin Haidn	Managment	current
 Dominik Scholz	IT	current
 \end{lstlisting}    
 \textbf{Backup of all databases using pg\_dump}\\
 \texttt{ pg\_dumpall -U [user] -f dumpfilename.sql} \\ \\
-\textbf{Backup of only one table using mysqldump}\\
+\textbf{Backup of only one table using pg\_dump}\\
 \texttt{ pg\_dump -U [user] -f dumpfilename.sql -t mitarbeiter} 
-\subsubsection{Options}
+\subsubsection{Pg\_dump's Options}
 \textbf{--data-only}\\
 Dump only the data, not the schema (data definitions).
 \\ \\
@@ -610,7 +610,7 @@ Then we tried it with the file which we had generated using the \texttt{-F custo
 There was no exception or anything, but somehow the import was not succesfull.
 \\
 \\
-Happily, the restore worked with the normal sql file. All that had to be done was importing in when we were logged in in the database using the \texttt{\i filename} command.
+Happily, the restore worked with the normal sql file. All that had to be done was importing in when we were logged in in the database using the \texttt{\textbackslash i filename} command.
 \subsection{Physical backups}
 In the Postgres Manual the following command could be found: \\
 \texttt{tar -cf backup.tar /usr/local/pgsql/data} \\
@@ -654,7 +654,8 @@ After having tried out all the possible backup methods, we finally can conclude,
 This was because the logical files were better readable, and it was easier doing the backup. The two tools provide the user with a wide range of possibilities. \\
 Automated backups should be done using the cron-deamon. We liked this option, because it was really easy and it also provides a lot of functionality. Besides this, the crontab was a centralized place in which we had both the mysql and the postgres backup and therefore it would be easy to change both of them at the same time.
 
-\section{Problems}
+\newpage
+\textbf{Problems} \\ \\
 \textbf{Mysql connection didn't work out} \\
 When trying to connect to the mysql Database, the following error was thrown:
 \texttt{ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'} \\
